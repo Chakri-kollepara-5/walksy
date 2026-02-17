@@ -23,7 +23,9 @@ const PostTaskModal = ({ onSuccess }) => {
         urgency: "medium",
         pickupLocation: "",
         dropLocation: "",
-        distance: "1.2"
+        distance: "1.2",
+        pickupCoordinates: null,
+        dropCoordinates: null
     });
 
     const reverseGeocode = async (lat, lng) => {
@@ -63,7 +65,36 @@ const PostTaskModal = ({ onSuccess }) => {
                 pickupLocation: address,
                 pickupCoordinates: location.coordinates
             }));
-            toast.success("Location updated!");
+            toast.success("Pickup location updated!");
+        } else if (location.error) {
+            toast.error("Location access denied. Please enable GPS.");
+        } else {
+            toast.info("Waiting for location to load...");
+        }
+    };
+
+    const handleUseCurrentLocationForDrop = async (e) => {
+        e.preventDefault();
+        if (location.loaded && location.coordinates.lat) {
+            const lat = location.coordinates.lat;
+            const lng = location.coordinates.lng;
+
+            toast.info("Fetching drop address...");
+
+            setFormData(prev => ({
+                ...prev,
+                dropLocation: `Fetching address...`,
+                dropCoordinates: location.coordinates
+            }));
+
+            const address = await reverseGeocode(lat, lng);
+
+            setFormData(prev => ({
+                ...prev,
+                dropLocation: address,
+                dropCoordinates: location.coordinates
+            }));
+            toast.success("Drop location updated!");
         } else if (location.error) {
             toast.error("Location access denied. Please enable GPS.");
         } else {
@@ -108,14 +139,14 @@ const PostTaskModal = ({ onSuccess }) => {
             }
 
             let pickCoords = formData.pickupCoordinates;
-            let dropCoords = null;
+            let dropCoords = formData.dropCoordinates;
 
             if (!pickCoords) {
                 toast.info("Locating pickup address...");
                 pickCoords = await geocodeAddress(formData.pickupLocation);
             }
 
-            if (formData.dropLocation && formData.dropLocation.length > 3) {
+            if (!dropCoords && formData.dropLocation && formData.dropLocation.length > 3) {
                 toast.info("Locating drop address...");
                 dropCoords = await geocodeAddress(formData.dropLocation);
             }
@@ -153,7 +184,7 @@ const PostTaskModal = ({ onSuccess }) => {
 
                 status: "open",
                 createdBy: user.uid,
-                creatorName: user.name || "Anonymous",
+                creatorName: user.name || user.displayName || user.email?.split('@')[0] || "Anonymous",
                 createdAt: serverTimestamp(),
                 expiresAt: expiresAt,
                 location: pickCoords,
@@ -172,7 +203,7 @@ const PostTaskModal = ({ onSuccess }) => {
             setFormData({
                 title: "", description: "", reward: "", category: "delivery",
                 urgency: "medium", pickupLocation: "", dropLocation: "", distance: "1.2",
-                pickupCoordinates: null
+                pickupCoordinates: null, dropCoordinates: null
             });
             if (onSuccess) onSuccess();
         } catch (error) {
@@ -273,14 +304,26 @@ const PostTaskModal = ({ onSuccess }) => {
 
                     <div className="space-y-2">
                         <Label htmlFor="drop" className="text-neutral-300">Drop Location</Label>
-                        <Input
-                            id="drop"
-                            placeholder="e.g., My Flat, Koramangala"
-                            value={formData.dropLocation}
-                            onChange={(e) => setFormData({ ...formData, dropLocation: e.target.value })}
-                            required
-                            className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
-                        />
+                        <div className="flex gap-2">
+                            <Input
+                                id="drop"
+                                placeholder="e.g., My Flat, Koramangala"
+                                value={formData.dropLocation}
+                                onChange={(e) => setFormData({ ...formData, dropLocation: e.target.value })}
+                                required
+                                className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                            />
+                            <Button
+                                type="button"
+                                variant="outline"
+                                size="icon"
+                                onClick={handleUseCurrentLocationForDrop}
+                                title="Use Current Location for Drop"
+                                className="shrink-0 bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-orange-500"
+                            >
+                                <MapPin className="h-4 w-4" />
+                            </Button>
+                        </div>
                     </div>
 
                     <div className="space-y-4 bg-white/5 p-4 rounded-xl border border-white/5">

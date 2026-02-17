@@ -49,19 +49,47 @@ const TaskMapView = ({ pickup, drop, pickupTitle = "Pickup", dropTitle = "Drop" 
 
     React.useEffect(() => {
         const fetchRoute = async () => {
-            if (!pLat || !pLng || !dLat || !dLng) return;
+            // Validate coordinates
+            if (!pLat || !pLng || !dLat || !dLng) {
+                console.warn("Invalid coordinates for routing:", { pLat, pLng, dLat, dLng });
+                return;
+            }
+
+            // Check if coordinates are valid numbers
+            if (isNaN(pLat) || isNaN(pLng) || isNaN(dLat) || isNaN(dLng)) {
+                console.error("Coordinates are not valid numbers:", { pLat, pLng, dLat, dLng });
+                setRoutePath([[pLat || center[0], pLng || center[1]], [dLat || center[0], dLng || center[1]]]);
+                return;
+            }
+
+            // Check if pickup and drop are the same (or very close)
+            const distance = Math.sqrt(Math.pow(dLat - pLat, 2) + Math.pow(dLng - pLng, 2));
+            if (distance < 0.0001) {
+                console.warn("Pickup and drop locations are too close or identical");
+                setRoutePath([[pLat, pLng], [dLat, dLng]]);
+                return;
+            }
 
             try {
                 // OSRM Public API (Demo server - usage limits apply)
+                // Format: /route/v1/{profile}/{coordinates}
+                // Coordinates format: {longitude},{latitude};{longitude},{latitude}
                 const url = `https://router.project-osrm.org/route/v1/driving/${pLng},${pLat};${dLng},${dLat}?overview=full&geometries=geojson`;
+                console.log("Fetching route from:", url);
+
                 const res = await fetch(url);
                 const data = await res.json();
 
-                if (data.routes && data.routes.length > 0) {
+                if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
                     const coords = data.routes[0].geometry.coordinates;
                     // GeoJSON is [lng, lat], Leaflet needs [lat, lng]
                     const latLngs = coords.map(c => [c[1], c[0]]);
                     setRoutePath(latLngs);
+                    console.log("Route fetched successfully:", latLngs.length, "points");
+                } else {
+                    console.warn("OSRM routing failed:", data.message || "Unknown error");
+                    // Fallback to straight line if routing fails
+                    setRoutePath([[pLat, pLng], [dLat, dLng]]);
                 }
             } catch (err) {
                 console.error("Routing error:", err);
@@ -72,6 +100,23 @@ const TaskMapView = ({ pickup, drop, pickupTitle = "Pickup", dropTitle = "Drop" 
 
         fetchRoute();
     }, [pLat, pLng, dLat, dLng]);
+
+    // Create custom colored markers
+    const pickupIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: iconShadow,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+    });
+
+    const dropIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: iconShadow,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34]
+    });
 
     return (
         <div className="h-[300px] w-full rounded-xl overflow-hidden shadow-inner border border-border">
@@ -85,15 +130,21 @@ const TaskMapView = ({ pickup, drop, pickupTitle = "Pickup", dropTitle = "Drop" 
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[pLat, pLng]}>
-                    <Popup className="font-semibold">{pickupTitle}</Popup>
+                <Marker position={[pLat, pLng]} icon={pickupIcon}>
+                    <Popup className="font-semibold">
+                        <div className="text-green-600 font-bold">📍 {pickupTitle}</div>
+                        <div className="text-xs text-gray-600">{pLat.toFixed(4)}, {pLng.toFixed(4)}</div>
+                    </Popup>
                 </Marker>
-                <Marker position={[dLat, dLng]}>
-                    <Popup className="font-semibold">{dropTitle}</Popup>
+                <Marker position={[dLat, dLng]} icon={dropIcon}>
+                    <Popup className="font-semibold">
+                        <div className="text-red-600 font-bold">🎯 {dropTitle}</div>
+                        <div className="text-xs text-gray-600">{dLat.toFixed(4)}, {dLng.toFixed(4)}</div>
+                    </Popup>
                 </Marker>
 
                 {/* Route Line */}
-                {routePath.length > 0 && <Polyline positions={routePath} color="blue" weight={4} opacity={0.7} />}
+                {routePath.length > 0 && <Polyline positions={routePath} color="#3b82f6" weight={4} opacity={0.7} />}
             </MapContainer>
         </div>
     );

@@ -116,11 +116,17 @@ const TaskCard = ({ task, onAccept }) => {
                             </div>
                         </div>
                         <div>
-                            <h4 className="font-bold text-white text-sm tracking-tight">{task.creatorName}</h4>
+                            <p className="text-[9px] text-zinc-500 uppercase tracking-wider font-medium mb-0.5">Posted by</p>
+                            <h4 className="font-bold text-white text-sm tracking-tight">{task.creatorName || "Anonymous"}</h4>
                             <div className="flex items-center gap-2 mt-0.5">
                                 <span className="text-[10px] text-zinc-500 font-medium flex items-center gap-1 uppercase tracking-wider">
                                     {task.createdAt ? timeAgo(task.createdAt) : "New"}
                                 </span>
+                                {task.isNew && (
+                                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[9px] font-black text-white uppercase tracking-wide animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+                                        <Sparkles size={8} className="fill-white" /> NEW
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </div>

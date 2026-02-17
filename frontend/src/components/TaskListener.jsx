@@ -14,16 +14,14 @@ const TaskListener = () => {
 
         const setupListener = async () => {
             try {
-                const { collection, query, onSnapshot, where, orderBy, Timestamp } = await import("firebase/firestore");
+                const { collection, query, onSnapshot, where, limit } = await import("firebase/firestore");
                 const { db } = await import("@/lib/firebase");
 
-                // Listen for OPEN tasks created AFTER now
-                const now = Timestamp.now();
+                // Listen for OPEN tasks (removed orderBy to avoid index requirement)
                 const q = query(
                     collection(db, "tasks"),
                     where("status", "==", "open"),
-                    where("createdAt", ">", now),
-                    orderBy("createdAt", "asc") // Required for inequality filter
+                    limit(20)
                 );
 
                 unsubscribe = onSnapshot(q, (snapshot) => {
@@ -45,7 +43,7 @@ const TaskListener = () => {
                         console.log("Task listener paused (offline)");
                     } else if (error.code === 'failed-precondition') {
                         console.error("Task listener error: Missing Index. Create here:", error.message);
-                    } else {
+                    } else if (error.code !== 'permission-denied') {
                         console.log("Task listener error:", error);
                     }
                 });

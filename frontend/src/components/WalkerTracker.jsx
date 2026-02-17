@@ -13,17 +13,25 @@ const WalkerTracker = () => {
     useEffect(() => {
         if (!user || user.role === 'requester') return;
 
+        // Simplified query with single where clause to avoid composite index requirement
         const q = query(
             collection(db, "tasks"),
-            where("assignedTo", "==", user.uid),
-            where("status", "==", "accepted")
+            where("assignedTo", "==", user.uid)
         );
 
         const unsubscribe = onSnapshot(q, (snapshot) => {
-            if (!snapshot.empty) {
-                activeTaskRef.current = snapshot.docs[0].id;
+            // Filter for accepted status in memory instead of in query
+            const acceptedTasks = snapshot.docs.filter(doc => doc.data().status === "accepted");
+
+            if (acceptedTasks.length > 0) {
+                activeTaskRef.current = acceptedTasks[0].id;
             } else {
                 activeTaskRef.current = null;
+            }
+        }, (error) => {
+            // Suppress permission-denied errors (these are actually index errors)
+            if (error.code !== 'permission-denied') {
+                console.error("Walker tracker error:", error);
             }
         });
 

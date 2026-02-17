@@ -53,17 +53,27 @@ const Home = () => {
         setUserData(prev => ({ ...prev, steps: steps }));
     }, [steps]);
 
-    // Data Fetching 
+    // Data Fetching - Real-time listener for Active Tasks
     useEffect(() => {
         const loadData = async () => {
             try {
-                const { collection, query, where, limit, onSnapshot, getDocs } = await import("firebase/firestore");
+                const { collection, query, where, orderBy, limit, onSnapshot, getDocs } = await import("firebase/firestore");
                 const { db } = await import("@/lib/firebase");
 
-                // Fetch Nearby Tasks
-                const q = query(collection(db, "tasks"), limit(3));
+                // Fetch Nearby Tasks with real-time updates - ordered by creation time (newest first)
+                const q = query(
+                    collection(db, "tasks"),
+                    orderBy("createdAt", "desc"),
+                    limit(6)
+                );
+
                 const unsubscribe = onSnapshot(q, (snap) => {
-                    const tasks = snap.docs.map(d => ({ id: d.id, ...d.data(), distance: "0.5 km" }));
+                    const tasks = snap.docs.map(d => ({
+                        id: d.id,
+                        ...d.data(),
+                        distance: d.data().distance || "0.5",
+                        isNew: isTaskNew(d.data().createdAt)
+                    }));
 
                     if (tasks.length > 0) {
                         setQuickTasks(tasks);
@@ -81,7 +91,8 @@ const Home = () => {
                                 category: "delivery",
                                 createdAt: new Date(),
                                 creatorName: "Sarah K.",
-                                status: "open"
+                                status: "open",
+                                isNew: false
                             },
                             {
                                 id: "mock2",
@@ -94,7 +105,8 @@ const Home = () => {
                                 category: "delivery",
                                 createdAt: new Date(),
                                 creatorName: "Law Firm X",
-                                status: "open"
+                                status: "open",
+                                isNew: false
                             }
                         ]);
                     }
@@ -117,13 +129,23 @@ const Home = () => {
                         category: "delivery",
                         createdAt: new Date(),
                         creatorName: "Sarah K.",
-                        status: "open"
+                        status: "open",
+                        isNew: false
                     }
                 ]);
             }
         };
         loadData();
     }, [user]);
+
+    // Helper function to check if a task is new (posted within last 5 minutes)
+    const isTaskNew = (createdAt) => {
+        if (!createdAt) return false;
+        const taskTime = createdAt.toDate ? createdAt.toDate() : new Date(createdAt);
+        const now = new Date();
+        const diffMinutes = (now - taskTime) / (1000 * 60);
+        return diffMinutes < 5;
+    };
 
     const handleTaskAccept = async (taskId) => {
         try { await acceptTask(taskId, user.uid, user.name || "Walker"); } catch (e) { }

@@ -20,7 +20,7 @@ import NotFound from "@/pages/NotFound";
 
 import SignInPage from "@/pages/auth/SignIn";
 import SignUpPage from "@/pages/auth/SignUp";
-import TaskListener from "@/components/TaskListener";
+import CompactTaskNotifier from "@/components/CompactTaskNotifier";
 
 const queryClient = new QueryClient();
 
@@ -76,7 +76,7 @@ const AppContent = () => {
                                     <Route path="*" element={<NotFound />} />
                                 </Routes>
                                 <Navigation />
-                                <TaskListener />
+                                <CompactTaskNotifier />
                             </div>
                         </ProtectedRoute>
                     }

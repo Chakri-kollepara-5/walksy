@@ -38,16 +38,43 @@ const Tasks = () => {
 
     const fetchTasks = async () => {
         try {
-            const { collection, getDocs, query, where, orderBy, limit } = await import("firebase/firestore");
+            const { collection, getDocs, query, orderBy, limit, doc, getDoc } = await import("firebase/firestore");
             const { db } = await import("@/lib/firebase");
 
             const q = query(collection(db, "tasks"), orderBy("createdAt", "desc"), limit(50));
             const querySnapshot = await getDocs(q);
 
-            const fetchedTasks = querySnapshot.docs.map(doc => ({
-                _id: doc.id,
-                ...doc.data()
-            }));
+            const fetchedTasks = await Promise.all(
+                querySnapshot.docs.map(async (taskDoc) => {
+                    const taskData = {
+                        _id: taskDoc.id,
+                        ...taskDoc.data()
+                    };
+
+                    // If creatorName is missing, undefined, or Anonymous, fetch it from users collection
+                    if ((!taskData.creatorName || taskData.creatorName === "Anonymous") && taskData.createdBy) {
+                        try {
+                            console.log("Fetching creator name for task:", taskDoc.id, "createdBy:", taskData.createdBy);
+                            const userDoc = await getDoc(doc(db, "users", taskData.createdBy));
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                taskData.creatorName = userData.name || userData.displayName || userData.email?.split('@')[0] || "Anonymous";
+                                console.log("Found creator name:", taskData.creatorName);
+                            } else {
+                                console.log("User document not found for:", taskData.createdBy);
+                                taskData.creatorName = "Anonymous";
+                            }
+                        } catch (error) {
+                            console.error("Error fetching creator name for task:", taskDoc.id, error);
+                            taskData.creatorName = "Anonymous";
+                        }
+                    } else {
+                        console.log("Task already has creatorName:", taskData.creatorName, "or no createdBy field");
+                    }
+
+                    return taskData;
+                })
+            );
 
             if (fetchedTasks.length === 0) {
                 // Fallback Mock Data
