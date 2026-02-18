@@ -8,7 +8,6 @@ import StepCounter from "@/components/StepCounter";
 import TaskCard from "@/components/TaskCard";
 import PostTaskModal from "@/components/PostTaskModal";
 import RequesterTaskListener from "@/components/RequesterTaskListener";
-import WalkerTaskListener from "@/components/WalkerTaskListener";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
@@ -154,7 +153,6 @@ const Home = () => {
     return (
         <PageTransition className="min-h-screen bg-[#050505] text-white selection:bg-orange-500/30 overflow-x-hidden pb-32">
             <RequesterTaskListener />
-            <WalkerTaskListener />
             <WalkerTracker />
 
             {/* How It Works Sidebar */}
