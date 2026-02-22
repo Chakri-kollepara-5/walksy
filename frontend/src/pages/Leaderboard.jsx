@@ -291,28 +291,32 @@ const Leaderboard = () => {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="fixed bottom-28 md:bottom-10 left-1/2 md:left-auto md:right-10 -translate-x-1/2 md:translate-x-0 w-[92%] md:w-80 z-40"
+                    className="fixed bottom-24 md:bottom-10 left-1/2 md:left-auto md:right-10 -translate-x-1/2 md:translate-x-0 w-[88%] max-w-sm md:w-80 z-40"
                 >
-                    <div className="bg-black/40 backdrop-blur-3xl p-1 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 ring-1 ring-white/5 relative group overflow-hidden">
+                    <div className="bg-black/60 backdrop-blur-2xl p-1.5 rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10 ring-1 ring-white/5 relative group overflow-hidden">
                         {/* Animated background accent */}
                         <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                        <div className="bg-white/5 rounded-xl p-3 flex items-center gap-4 border border-white/5 relative z-10 transition-transform group-hover:scale-[0.99] duration-300">
-                            <div className="font-bold w-8 text-center text-yellow-500 text-sm font-mono drop-shadow-[0_0_8px_rgba(234,179,8,0.3)]">
-                                #{userRank.rank}
+                        <div className="bg-zinc-900/50 rounded-[1.6rem] p-3 flex items-center gap-4 border border-white/5 relative z-10 transition-all duration-300">
+                            <div className="flex flex-col items-center justify-center min-w-[48px] h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/20 shadow-inner">
+                                <span className="text-[9px] font-black text-yellow-500/50 uppercase leading-none mb-0.5">Rank</span>
+                                <span className="text-xl font-black text-yellow-500 leading-none">#{userRank.rank}</span>
                             </div>
-                            <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-xs font-black text-yellow-500 border border-yellow-500/20 shadow-inner">
-                                {userRank.avatar}
-                            </div>
+
                             <div className="flex-1 min-w-0">
-                                <div className="font-bold text-white text-sm truncate">You</div>
-                                <div className="text-[10px] text-zinc-500 font-medium truncate">
-                                    {Number(userRank.rank) <= 10 ? "Top Tier Performer" : "Keep Rising"}
+                                <div className="flex items-center gap-2">
+                                    <span className="font-black text-white text-sm">YOU</span>
+                                    <div className="w-1 h-1 rounded-full bg-zinc-600" />
+                                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest truncate">Lvl {userRank.level || 1}</span>
+                                </div>
+                                <div className="text-[11px] text-zinc-400 font-bold truncate">
+                                    {Number(userRank.rank) <= 10 ? "Top Tier Performer" : "Rising Star"}
                                 </div>
                             </div>
-                            <div className="text-right pr-2">
-                                <div className="font-bold text-white tracking-tight">{getDisplayValue(userRank)}</div>
-                                <div className="text-[9px] text-zinc-600 uppercase font-black tracking-widest">{getDisplayUnit()}</div>
+
+                            <div className="text-right pl-2 border-l border-white/5">
+                                <div className="font-black text-white text-base tracking-tighter leading-none mb-1">{getDisplayValue(userRank)}</div>
+                                <div className="text-[9px] text-yellow-500/80 uppercase font-black tracking-widest leading-none">{getDisplayUnit()}</div>
                             </div>
                         </div>
                     </div>
