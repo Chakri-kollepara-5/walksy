@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { ArrowUpRight, ArrowDownLeft, CreditCard, TrendingUp, Eye, EyeOff, Plus, Wallet as WalletIcon, Clock, Zap } from "lucide-react";
+import { ArrowUpRight, ArrowDownLeft, CreditCard, TrendingUp, Eye, EyeOff, Plus, Wallet as WalletIcon, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import { motion, AnimatePresence } from "framer-motion";
@@ -124,7 +124,7 @@ const Wallet = () => {
                         <div className="relative z-10">
                             <div className="flex items-center justify-between mb-2">
                                 <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.15em] flex items-center gap-2">
-                                    <Zap size={12} className="text-orange-400 fill-orange-400" /> Available Balance
+                                    Available Balance
                                 </h2>
                                 <Button
                                     variant="ghost"

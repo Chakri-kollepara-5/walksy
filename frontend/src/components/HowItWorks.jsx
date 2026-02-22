@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Smartphone, MapPin, Zap, Wallet, ShieldCheck, Lock, KeyRound, ChevronDown, ChevronUp } from "lucide-react";
+import { X, Smartphone, MapPin, Wallet, ShieldCheck, Lock, KeyRound, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HowItWorks = ({ isOpen, onClose }) => {

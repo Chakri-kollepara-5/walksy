@@ -3,7 +3,7 @@ import { collection, query, limit, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/context/AuthContext";
 import { toast } from "sonner";
-import { Zap, MapPin, TrendingUp } from "lucide-react";
+import { MapPin, TrendingUp, Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -47,13 +47,13 @@ const CompactTaskNotifier = () => {
                     // Show compact, attractive toast notification
                     toast(
                         <div className="flex items-start gap-3 w-full">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shrink-0 shadow-lg">
-                                <Zap className="w-5 h-5 text-white fill-white" />
+                            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                <Bell className="w-5 h-5 text-white" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
                                     <h4 className="font-bold text-white text-sm truncate">{taskData.title}</h4>
-                                    <span className="px-1.5 py-0.5 rounded-full bg-red-500 text-[9px] font-black text-white uppercase animate-pulse">
+                                    <span className="px-1.5 py-0.5 rounded-full bg-white/10 text-[9px] font-bold text-zinc-400 uppercase">
                                         NEW
                                     </span>
                                 </div>

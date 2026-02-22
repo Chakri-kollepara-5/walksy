@@ -2,18 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   background: #020204;
   margin: 0;
   padding: 0;
   color: white;
 }
+
 /* Walksy Design System - Hyper-Premium Dark UI */
 
 @layer base {
   :root {
     /* Deep Black Base */
-    --background: 240 10% 1%; /* #020204 equivalent */
+    --background: 240 10% 1%;
+    /* #020204 equivalent */
     --foreground: 0 0% 98%;
 
     /* Cards & Surfaces */
@@ -26,7 +29,8 @@ html, body {
     --popover-foreground: 0 0% 98%;
 
     /* Primary - Vibrant Orange/Lava */
-    --primary: 24 95% 53%; /* Orange-500 */
+    --primary: 24 95% 53%;
+    /* Orange-500 */
     --primary-foreground: 0 0% 100%;
     --primary-light: 32 95% 60%;
     --primary-dark: 20 90% 45%;
@@ -62,14 +66,14 @@ html, body {
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #f97316, #fb923c);
-    --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+    --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
     --gradient-subtle: linear-gradient(180deg, #020204, #0a0a0c);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.5);
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -1px rgba(0,0,0,0.3);
-    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.3);
-    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.6), 0 10px 10px -5px rgba(0,0,0,0.4);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
 
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -108,6 +112,7 @@ html, body {
 }
 
 @layer components {
+
   /* Clean Card Styles - PhonePe Inspired */
   .card-clean {
     @apply bg-card rounded-xl border border-border shadow-md;

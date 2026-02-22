@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import Walksy3DModel from "@/components/Walksy3DModel";
-import { Sparkles, ArrowRight, Loader2, User, Briefcase } from "lucide-react";
+import { ArrowRight, Loader2, User, Briefcase } from "lucide-react";
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -58,7 +58,6 @@ const SignUp = () => {
                         transition={{ delay: 0.5, duration: 0.8 }}
                         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6"
                     >
-                        <Sparkles size={14} className="text-orange-400" />
                         <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-200/80">Join The Movement</span>
                     </motion.div>
                     <h1 className="text-6xl font-black text-white tracking-tighter mb-4 leading-tight">

@@ -61,13 +61,6 @@ const SplashScreen = ({ onComplete }) => {
                             WALKSY
                         </h1>
 
-                        {/* Shimmer Effect over Text */}
-                        <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-12"
-                            initial={{ x: "-100%" }}
-                            animate={step === 1 ? { x: "200%" } : {}}
-                            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
-                        />
                     </motion.div>
                 </div>
 

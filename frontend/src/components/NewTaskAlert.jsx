@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, X, Zap, MapPin, TrendingUp } from "lucide-react";
+import { Bell, X, MapPin, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -81,7 +81,6 @@ const NewTaskAlert = ({ task, onClose, onViewTask }) => {
                                     <div>
                                         <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight flex items-center gap-2">
                                             NEW TASK ALERT!
-                                            <Zap className="w-6 h-6 fill-yellow-300 text-yellow-300 animate-pulse" />
                                         </h3>
                                         <p className="text-orange-100 text-sm font-medium">Just posted • Grab it fast!</p>
                                     </div>

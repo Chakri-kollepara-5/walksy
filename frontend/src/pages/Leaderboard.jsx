@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Trophy, Medal, Crown, TrendingUp, User, Award, Flame, Star } from "lucide-react";
+import { Trophy, Medal, TrendingUp, User, Award, Flame, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
@@ -113,7 +113,7 @@ const Leaderboard = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500 mb-4"
                     >
-                        <Crown size={12} className="fill-yellow-500" /> Top Performers
+                        Top Performers
                     </motion.div>
                     <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-2">Leaderboard</h1>
                     <p className="text-zinc-500 font-medium">Rise through the ranks and earn prestige.</p>
@@ -210,7 +210,6 @@ const Leaderboard = () => {
                                     className="flex flex-col items-center relative z-20 scale-110"
                                 >
                                     <div className="relative mb-5">
-                                        <Crown className="absolute -top-10 left-1/2 -translate-x-1/2 text-yellow-400 fill-yellow-400 w-10 h-10 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] animate-bounce" />
                                         <div className="w-20 h-20 rounded-2xl border border-yellow-500/30 bg-gradient-to-b from-[#1a1500] to-black flex items-center justify-center font-bold text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)] relative">
                                             {leaderboardData[0].avatar}
                                         </div>

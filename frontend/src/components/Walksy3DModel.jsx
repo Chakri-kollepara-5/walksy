@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, useAnimations, Environment, ContactShadows, SoftShadows, Sparkles } from '@react-three/drei';
+import { useGLTF, useAnimations, Environment, ContactShadows, SoftShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
 // --- V15 "LIVING ATMOSPHERE" EDITION ---
@@ -153,16 +153,6 @@ const Walksy3DModel = () => {
                 {/* SCENE */}
                 <group position={[0, 0, 0]}>
                     <LivingRunner />
-                    {/* Upward Flowing Particles - "Energy Rising" */}
-                    <Sparkles
-                        count={40}
-                        scale={12}
-                        size={4}
-                        speed={0.4}
-                        opacity={0.4}
-                        color="#fff7ed"
-                        position={[0, 0, 2]}
-                    />
                 </group>
 
                 <ContactShadows resolution={1024} scale={40} blur={3} opacity={0.3} far={15} color="#000000" position={[0, -5, 0]} />

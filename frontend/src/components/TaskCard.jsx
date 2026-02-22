@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Clock, ArrowRight, CheckCircle, AlertCircle, Navigation, User, Sparkles, Zap, ChevronRight } from "lucide-react";
+import { MapPin, Clock, ArrowRight, CheckCircle, AlertCircle, Navigation, User, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import TaskMapModal from "@/components/TaskMapModal";
@@ -123,8 +123,8 @@ const TaskCard = ({ task, onAccept }) => {
                                     {task.createdAt ? timeAgo(task.createdAt) : "New"}
                                 </span>
                                 {task.isNew && (
-                                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[9px] font-black text-white uppercase tracking-wide animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.5)]">
-                                        <Sparkles size={8} className="fill-white" /> NEW
+                                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[9px] font-black text-white uppercase tracking-wide shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+                                        NEW
                                     </span>
                                 )}
                             </div>
@@ -162,7 +162,7 @@ const TaskCard = ({ task, onAccept }) => {
                         </div>
                         {isHighValue && (
                             <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-orange-500/30 text-[10px] font-bold text-orange-300 uppercase tracking-wide">
-                                <Zap size={10} className="fill-orange-300" /> Hot
+                                Hot
                             </span>
                         )}
                     </div>

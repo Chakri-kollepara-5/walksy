@@ -4,7 +4,7 @@ import { collection, query, limit, onSnapshot, where } from "firebase/firestore"
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Zap, X, MapPin } from "lucide-react";
+import { Bell, X, MapPin } from "lucide-react";
 
 /**
  * TopTaskNotification - Premium "Dynamic Island" style notification
@@ -132,8 +132,8 @@ const TopTaskNotification = () => {
 
                             <div className="relative p-3.5 flex items-center gap-3.5">
                                 {/* Icon */}
-                                <div className="shrink-0 w-11 h-11 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                                    <Zap className="w-5 h-5 text-white fill-white animate-pulse" />
+                                <div className="shrink-0 w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center">
+                                    <Bell className="w-5 h-5 text-white" />
                                 </div>
 
                                 {/* Texts */}

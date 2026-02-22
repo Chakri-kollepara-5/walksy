@@ -6,9 +6,7 @@ import {
     List,
     SlidersHorizontal,
     CheckCircle,
-    ArrowUp,
-    Zap,
-    Flame
+    ArrowUp
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -165,22 +163,23 @@ const Tasks = () => {
             {/* HEADER - Cinematic Glass */}
             <header className="sticky top-0 z-40 bg-[#020204]/80 backdrop-blur-xl border-b border-white/5 pt-6 pb-4 px-6 md:px-10 transition-all">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                    <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-6">
                         <div>
-                            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white flex items-center gap-3">
-                                TASKS
-                                <span className="text-[10px] font-bold bg-white/5 text-zinc-400 px-2 py-0.5 rounded border border-white/5 tracking-widest uppercase">
-                                    V2.0
-                                </span>
-                            </h1>
-                            <div className="flex items-center gap-2 mt-2">
-                                <span className="flex h-2 w-2 relative">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                </span>
-                                <p className="text-zinc-400 font-medium text-sm">
-                                    <span className="text-white font-bold">{filteredTasks.length}</span> Active Tasks Nearby
-                                </p>
+                            <div className="flex flex-col gap-2">
+                                <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
+                                    TASKS
+                                </h1>
+                                <div className="flex items-center gap-3 mt-1">
+                                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                        <span className="text-emerald-500 font-bold tracking-[0.2em] text-[10px] uppercase">Radar Online</span>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                                        <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-wider">
+                                            <span className="text-white">{filteredTasks.length}</span> Opportunities Found
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -255,7 +254,7 @@ const Tasks = () => {
             {viewMode === "list" && (
                 <div className="px-4 md:px-10 max-w-7xl mx-auto mt-8">
                     <div className="flex items-center justify-between text-[10px] font-bold text-zinc-600 mb-6 px-1 uppercase tracking-[0.2em]">
-                        <span className="flex items-center gap-2"><Flame size={12} className="text-orange-500" /> Hot Opportunities</span>
+                        <span className="flex items-center gap-2">Hot Opportunities</span>
                         <div className="flex items-center gap-1 opacity-50">
                             <SlidersHorizontal size={10} /> Realtime
                         </div>
