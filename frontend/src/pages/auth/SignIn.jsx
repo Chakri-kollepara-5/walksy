@@ -91,6 +91,7 @@ const SignIn = () => {
                             <Label htmlFor="email" className="text-zinc-400 text-xs uppercase font-bold tracking-widest group-focus-within:text-orange-500 transition-colors">Email Address</Label>
                             <Input
                                 id="email"
+                                name="email"
                                 type="email"
                                 placeholder="name@example.com"
                                 value={email}
@@ -106,6 +107,7 @@ const SignIn = () => {
                             </div>
                             <Input
                                 id="password"
+                                name="password"
                                 type="password"
                                 placeholder="••••••••"
                                 value={password}

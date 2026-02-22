@@ -110,6 +110,9 @@ const Home = () => {
                         ]);
                     }
                     setLoading(false);
+                }, (error) => {
+                    console.error("Home Firestore listener error:", error);
+                    setLoading(false);
                 });
                 return () => unsubscribe();
             } catch (e) {
@@ -174,12 +177,14 @@ const Home = () => {
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                             <span className="text-xs font-bold text-white tracking-wide">System Online</span>
                         </div>
-                        <Link to="/profile">
-                            <Avatar className="h-9 w-9 ring-2 ring-white/10 hover:ring-orange-500 transition-all">
-                                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
-                                <AvatarFallback>U</AvatarFallback>
-                            </Avatar>
-                        </Link>
+                        <Avatar className="h-9 w-9 ring-2 ring-white/10 hover:ring-orange-500 transition-all">
+                            <AvatarImage
+                                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`}
+                                crossOrigin="anonymous"
+                                referrerPolicy="no-referrer"
+                            />
+                            <AvatarFallback>U</AvatarFallback>
+                        </Avatar>
                     </div>
                 </GlassPanel>
             </header>

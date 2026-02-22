@@ -96,6 +96,7 @@ const SignUp = () => {
                             <Label htmlFor="name" className="text-zinc-400 text-xs uppercase font-bold tracking-widest group-focus-within:text-white transition-colors">Full Name</Label>
                             <Input
                                 id="name"
+                                name="name"
                                 placeholder="John Doe"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -107,6 +108,7 @@ const SignUp = () => {
                             <Label htmlFor="email" className="text-zinc-400 text-xs uppercase font-bold tracking-widest group-focus-within:text-white transition-colors">Email Address</Label>
                             <Input
                                 id="email"
+                                name="email"
                                 type="email"
                                 placeholder="name@example.com"
                                 value={email}
@@ -119,6 +121,7 @@ const SignUp = () => {
                             <Label htmlFor="password" className="text-zinc-400 text-xs uppercase font-bold tracking-widest group-focus-within:text-white transition-colors">Password</Label>
                             <Input
                                 id="password"
+                                name="password"
                                 type="password"
                                 placeholder="Min. 6 characters"
                                 value={password}

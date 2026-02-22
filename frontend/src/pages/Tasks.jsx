@@ -97,6 +97,7 @@ const Tasks = () => {
                 setTasks(fetchedTasks);
             }
         } catch (error) {
+            console.error("Error fetching tasks from Firestore:", error);
             setTasks([]);
         } finally {
             setLoading(false);
@@ -185,7 +186,7 @@ const Tasks = () => {
 
                         {/* Actions */}
                         <div className="flex items-center gap-4">
-                            <PostTaskModal />
+                            <PostTaskModal onSuccess={fetchTasks} />
 
                             <div className="flex items-center bg-white/5 rounded-xl p-1 border border-white/5 shadow-inner">
                                 <Button

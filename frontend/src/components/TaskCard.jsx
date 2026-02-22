@@ -108,7 +108,11 @@ const TaskCard = ({ task, onAccept }) => {
                     <div className="flex items-center gap-3">
                         <div className="relative">
                             <Avatar className="h-11 w-11 border-2 border-black ring-1 ring-white/10">
-                                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${task.creatorName}`} />
+                                <AvatarImage
+                                    src={task.creatorPhotoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=${task.creatorName}`}
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="no-referrer"
+                                />
                                 <AvatarFallback className="bg-zinc-800 text-zinc-400"><User size={18} /></AvatarFallback>
                             </Avatar>
                             <div className="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5">

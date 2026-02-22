@@ -13,22 +13,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-let db;
-// Initialize Firestore with specific settings or fallback
-try {
-    // Attempt to enable multi-tab persistence
-    db = initializeFirestore(app, {
-        localCache: persistentLocalCache({
-            tabManager: persistentMultipleTabManager()
-        })
-    });
-} catch (error) {
-    // If BloomFilterError or other persistence errors occur, fallback to default
-    console.warn("Firestore persistence failed, falling back to default instance:", error);
-    db = getFirestore(app);
-}
+const db = getFirestore(app);
 
 export { db };
 

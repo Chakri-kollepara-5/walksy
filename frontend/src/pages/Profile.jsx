@@ -126,7 +126,12 @@ const Profile = () => {
                     <div className="relative group cursor-pointer" onClick={() => setEditOpen(true)}>
                         <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 blur opacity-70 group-hover:opacity-100 transition-opacity" />
                         <Avatar className="h-32 w-32 border-4 border-[#020204] relative">
-                            <AvatarImage src={userData.photoURL} className="object-cover" />
+                            <AvatarImage
+                                src={userData.photoURL}
+                                className="object-cover"
+                                crossOrigin="anonymous"
+                                referrerPolicy="no-referrer"
+                            />
                             <AvatarFallback className="text-4xl font-bold bg-[#151518] text-white">
                                 {userData.name?.charAt(0).toUpperCase()}
                             </AvatarFallback>
@@ -256,7 +261,12 @@ const Profile = () => {
                     <div className="space-y-4 py-4">
                         <div className="flex flex-col items-center gap-3 mb-4">
                             <Avatar className="h-24 w-24 border-2 border-white/10">
-                                <AvatarImage src={editForm.photoURL} className="object-cover" />
+                                <AvatarImage
+                                    src={editForm.photoURL}
+                                    className="object-cover"
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="no-referrer"
+                                />
                                 <AvatarFallback className="bg-white/10 text-white text-2xl font-bold">{editForm.name?.charAt(0).toUpperCase()}</AvatarFallback>
                             </Avatar>
                         </div>
@@ -265,6 +275,7 @@ const Profile = () => {
                             <Label htmlFor="name" className="text-zinc-400">Full Name</Label>
                             <Input
                                 id="name"
+                                name="name"
                                 value={editForm.name}
                                 onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
                                 className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-zinc-600 h-11"
@@ -274,6 +285,7 @@ const Profile = () => {
                             <Label htmlFor="photo" className="text-zinc-400">Profile Picture URL</Label>
                             <Input
                                 id="photo"
+                                name="photo"
                                 value={editForm.photoURL}
                                 onChange={(e) => setEditForm({ ...editForm, photoURL: e.target.value })}
                                 className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-zinc-600 h-11"
