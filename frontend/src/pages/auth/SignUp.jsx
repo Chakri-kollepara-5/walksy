@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import Walksy3DModel from "@/components/Walksy3DModel";
-import { ArrowRight, Loader2, User, Briefcase } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -134,17 +134,17 @@ const SignUp = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div
                                     onClick={() => setRole("walker")}
-                                    className={`cursor-pointer p-4 rounded-xl border transition-all flex flex-col items-center gap-2 text-center ${role === "walker" ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/20" : "bg-white/5 border-white/10 text-zinc-400 hover:bg-white/10"}`}
+                                    className={`cursor-pointer p-4 h-24 rounded-xl border transition-all flex flex-col items-center justify-center gap-1 text-center ${role === "walker" ? "bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/20" : "bg-white/5 border-white/10 text-zinc-400 hover:bg-white/10"}`}
                                 >
-                                    <User size={24} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Walk & Earn</span>
+                                    <span className="text-sm font-black uppercase tracking-wider">Walk & Earn</span>
+                                    <span className={`text-[10px] ${role === "walker" ? "text-orange-100/60" : "text-zinc-500"}`}>Earn rewards daily</span>
                                 </div>
                                 <div
                                     onClick={() => setRole("requester")}
-                                    className={`cursor-pointer p-4 rounded-xl border transition-all flex flex-col items-center gap-2 text-center ${role === "requester" ? "bg-white text-black border-white shadow-lg" : "bg-white/5 border-white/10 text-zinc-400 hover:bg-white/10"}`}
+                                    className={`cursor-pointer p-4 h-24 rounded-xl border transition-all flex flex-col items-center justify-center gap-1 text-center ${role === "requester" ? "bg-white text-black border-white shadow-lg" : "bg-white/5 border-white/10 text-zinc-400 hover:bg-white/10"}`}
                                 >
-                                    <Briefcase size={24} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Post Tasks</span>
+                                    <span className="text-sm font-black uppercase tracking-wider">Post Tasks</span>
+                                    <span className={`text-[10px] ${role === "requester" ? "text-zinc-500" : "text-zinc-500"}`}>Hire local walkers</span>
                                 </div>
                             </div>
                         </div>

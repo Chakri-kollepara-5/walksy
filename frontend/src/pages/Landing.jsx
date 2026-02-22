@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, DollarSign, Shield, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
 import { LogoText } from "@/components/Logo";
@@ -72,17 +72,14 @@ const Landing = () => {
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         {
-                            icon: MapPin,
                             title: "Tasks Nearby",
                             desc: "Find paid tasks within walking distance using our real-time map."
                         },
                         {
-                            icon: DollarSign,
                             title: "Instant Payouts",
                             desc: "Withdraw your earnings directly to your bank account or UPI instantly."
                         },
                         {
-                            icon: Shield,
                             title: "Safe & Secure",
                             desc: "Verified tasks and secure payments ensure a safe earning experience."
                         }
@@ -95,8 +92,8 @@ const Landing = () => {
                             transition={{ delay: i * 0.1 }}
                             className="bg-background p-8 rounded-3xl border shadow-sm hover:shadow-md transition-all"
                         >
-                            <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                                <feature.icon className="w-6 h-6 text-primary" />
+                            <div className="w-12 h-12 bg-zinc-100 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 border border-zinc-200 dark:border-white/10">
+                                <span className="text-sm font-black text-zinc-400">0{i + 1}</span>
                             </div>
                             <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                             <p className="text-muted-foreground leading-relaxed">

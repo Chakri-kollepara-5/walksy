@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Smartphone, MapPin, Wallet, ShieldCheck, Lock, KeyRound, ChevronDown, ChevronUp } from "lucide-react";
+import { X, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HowItWorks = ({ isOpen, onClose }) => {
@@ -12,41 +12,34 @@ const HowItWorks = ({ isOpen, onClose }) => {
 
     const steps = [
         {
-            icon: Smartphone,
             title: "Connect",
             desc: "Create your profile and link your digital wallet to start your journey.",
             details: null
         },
         {
-            icon: MapPin,
             title: "Discover",
             desc: "Browse the live map to find high-value tasks and gigs nearby.",
             details: null
         },
         {
-            icon: ShieldCheck,
             title: "Execute & Verify",
             desc: "Complete the task and use our Secure OTP Protocol to prove delivery.",
             details: [
                 {
                     title: "Arrive at Location",
-                    text: "Reach the drop-off point and meet the receiver.",
-                    icon: MapPin
+                    text: "Reach the drop-off point and meet the receiver."
                 },
                 {
                     title: "Ask for OTP",
-                    text: "The receiver has a 4-digit secret code on their app.",
-                    icon: Lock
+                    text: "The receiver has a 4-digit secret code on their app."
                 },
                 {
                     title: "Enter & Validate",
-                    text: "Input the code in your app. If it matches, the task is verified instantly.",
-                    icon: KeyRound
+                    text: "Input the code in your app. If it matches, the task is verified instantly."
                 }
             ]
         },
         {
-            icon: Wallet,
             title: "Earn",
             desc: "Get paid instantly in crypto or fiat once the task is approved.",
             details: null
@@ -103,7 +96,7 @@ const HowItWorks = ({ isOpen, onClose }) => {
                                     >
                                         <div className="flex gap-5">
                                             <div className="relative z-10 shrink-0 w-12 h-12 rounded-2xl bg-[#1a1a1c] border border-white/10 flex items-center justify-center shadow-lg group-hover:border-orange-500/50 group-hover:bg-orange-950/20 transition-all duration-500">
-                                                <step.icon size={22} className="text-zinc-400 group-hover:text-orange-500 transition-colors" />
+                                                <span className="text-xl font-black text-white group-hover:text-orange-500 transition-colors">0{index + 1}</span>
                                             </div>
                                             <div className="flex-1 pt-1">
                                                 <h3 className="text-lg font-bold text-white mb-1 group-hover:text-orange-400 transition-colors">
