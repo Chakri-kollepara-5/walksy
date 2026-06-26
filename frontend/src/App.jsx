@@ -17,6 +17,7 @@ import Wallet from "@/pages/Wallet";
 import Leaderboard from "@/pages/Leaderboard";
 import Profile from "@/pages/Profile";
 import NotFound from "@/pages/NotFound";
+import AdminSeed from "@/pages/AdminSeed";
 
 import SignInPage from "@/pages/auth/SignIn";
 import SignUpPage from "@/pages/auth/SignUp";
@@ -60,6 +61,7 @@ const AppContent = () => {
                 <Route path="/" element={<PublicRoute><Landing /></PublicRoute>} />
                 <Route path="/sign-in" element={<PublicRoute><SignInPage /></PublicRoute>} />
                 <Route path="/sign-up" element={<PublicRoute><SignUpPage /></PublicRoute>} />
+                <Route path="/admin/seed" element={<AdminSeed />} />
 
                 {/* Protected Routes */}
                 <Route

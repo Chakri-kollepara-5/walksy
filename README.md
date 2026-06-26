@@ -1,94 +1,73 @@
-# Walksy - Walk. Help. Earn.
+# Welcome to your Lovable project
 
-Walksy is a MERN stack application connecting daily walkers with nearby people who need small errands completed.
+## Project info
 
-## 🚀 Technogies
+**URL**: https://lovable.dev/projects/cc216147-4931-468c-aee7-cd029f2e50f8
 
-- **Frontend**: React, Vite, Tailwind CSS, Lucide Icons, Shadcn UI
-- **Backend**: Node.js, Express.js, MongoDB, Mongoose
-- **Auth**: JWT, Bcrypt
-- **Deployment**: Vercel (Frontend), Render (Backend)
+## How can I edit this code?
 
-## 📂 Project Structure
+There are several ways of editing your application.
 
-```
-/
-├── frontend/           # Frontend (React + Vite)
-│   ├── src/            # React source code
-│   │   ├── components/ # Reusable UI Components
-│   │   ├── context/    # Auth Context
-│   │   ├── pages/      # App Pages (Home, Tasks, Auth)
-│   │   ├── services/   # API Service
-│   │   └── App.jsx     # Main Component & Routing
-│   ├── public/         # Static assets
-│   ├── index.html      # HTML entry point
-│   └── ...config files # Vite, Tailwind, ESLint configs
-├── backend/            # Backend API (Express + MongoDB)
-│   ├── config/         # DB Connection
-│   ├── controllers/    # Request Handlers
-│   ├── middleware/     # Auth & Error Handling
-│   ├── models/         # Mongoose Schemas (User, Task)
-│   ├── routes/         # API Routes
-│   ├── utils/          # Helpers
-│   └── server.js       # Entry Point
-└── README.md
-```
+**Use Lovable**
 
-## 🛠️ Installation & Setup
+Simply visit the [Lovable Project](https://lovable.dev/projects/cc216147-4931-468c-aee7-cd029f2e50f8) and start prompting.
 
-### Prerequisites
-- Node.js (v16+)
-- MongoDB (Local or Atlas URI)
+Changes made via Lovable will be committed automatically to this repo.
 
-### 1. Clone & Install Dependencies
+**Use your preferred IDE**
 
-**Frontend:**
-```bash
-cd frontend
-npm install
-```
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-**Backend:**
-```bash
-cd backend
-npm install
-```
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-### 2. Configure Environment Variables
+Follow these steps:
 
-**Frontend (`frontend/.env.local`):**
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
+# Step 3: Install the necessary dependencies.
+npm i
 
-### 3. Run the Application
-
-**Start Backend:**
-```bash
-cd backend
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-**Start Frontend:**
-```bash
-# In a new terminal
-cd frontend
-npm run dev
-```
+**Edit a file directly in GitHub**
 
-Open `http://localhost:5173` to view the app.
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
+**Use GitHub Codespaces**
 
-## API Endpoints
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-- **Auth**: `POST /api/users`, `POST /api/users/login`
-- **Tasks**: `POST /api/tasks`, `GET /api/tasks/nearby`, `PUT /api/tasks/:id/accept`
-- **Transactions**: `GET /api/transactions`
+## What technologies are used for this project?
 
-## Features implemented
-- User Authentication (Walker/Requester)
--  Location-based Task Discovery
-- Task Accept/Completion Flow (Simulated)
--  Dashboard with User Stats
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/cc216147-4931-468c-aee7-cd029f2e50f8) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

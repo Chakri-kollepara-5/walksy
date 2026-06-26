@@ -99,11 +99,11 @@ const Leaderboard = () => {
     };
 
     return (
-        <PageTransition className="min-h-screen bg-[#020204] pb-32 relative text-white selection:bg-orange-500/30 overflow-hidden">
+        <PageTransition className="min-h-screen bg-[#FCF6EC] pb-32 relative text-[#2C2520] selection:bg-[#FE4F4F]/30 overflow-hidden bg-grid-dotted">
 
             {/* Background Effects */}
-            <div className="fixed top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-[#1a1500] to-transparent pointer-events-none" />
-            <div className="fixed top-[-20%] left-[20%] w-[600px] h-[600px] bg-yellow-600/5 blur-[120px] rounded-full pointer-events-none animate-pulse-slow" />
+            <div className="fixed top-0 left-0 w-full h-[60vh] bg-gradient-to-b from-[#FE4F4F]/5 to-transparent pointer-events-none" />
+            <div className="fixed top-[-20%] left-[20%] w-[600px] h-[600px] bg-[#FE4F4F]/5 blur-[120px] rounded-full pointer-events-none animate-pulse-slow" />
 
             {/* Header */}
             <header className="relative pt-8 pb-10 px-6 z-10">
@@ -111,17 +111,17 @@ const Leaderboard = () => {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500 mb-4"
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFDF9] border border-[#FE4F4F]/15 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FE4F4F] mb-4 shadow-sm"
                     >
                         Top Performers
                     </motion.div>
-                    <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-2">Leaderboard</h1>
-                    <p className="text-zinc-500 font-medium">Rise through the ranks and earn prestige.</p>
+                    <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-[#FE4F4F] mb-2 font-condensed">Leaderboard</h1>
+                    <p className="text-stone-500 font-medium">Rise through the ranks and earn prestige.</p>
                 </div>
 
                 {/* Filters */}
                 <div className="max-w-md mx-auto flex flex-col gap-4 relative z-10">
-                    <div className="flex bg-white/5 p-1 rounded-2xl border border-white/5 backdrop-blur-md">
+                    <div className="flex bg-[#FFFDF9] p-1 rounded-2xl border border-[#FE4F4F]/15 shadow-sm backdrop-blur-md">
                         {periods.map((period) => (
                             <Button
                                 key={period.id}
@@ -129,8 +129,8 @@ const Leaderboard = () => {
                                 size="sm"
                                 onClick={() => setSelectedPeriod(period.id)}
                                 className={`flex-1 rounded-xl transition-all text-xs font-bold tracking-wide ${selectedPeriod === period.id
-                                    ? "bg-white text-black shadow-lg"
-                                    : "text-zinc-500 hover:text-white"
+                                    ? "bg-[#FE4F4F] text-white shadow-sm"
+                                    : "text-stone-500 hover:text-[#FE4F4F]"
                                     }`}
                             >
                                 {period.label}
@@ -148,8 +148,8 @@ const Leaderboard = () => {
                                     size="sm"
                                     onClick={() => setSelectedCategory(category.id)}
                                     className={`flex items-center gap-2 border rounded-full px-5 h-9 text-xs font-bold uppercase tracking-wider transition-all ${selectedCategory === category.id
-                                        ? "bg-white/10 text-white border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                        : "bg-transparent text-zinc-600 border-white/5 hover:border-white/10 hover:text-zinc-400"
+                                        ? "bg-[#FE4F4F]/10 text-[#FE4F4F] border-[#FE4F4F]/35 shadow-sm"
+                                        : "bg-transparent text-stone-500 border-[#FE4F4F]/15 hover:border-[#FE4F4F]/30 hover:text-[#FE4F4F]"
                                         }`}
                                 >
                                     <Icon size={12} />
@@ -164,20 +164,20 @@ const Leaderboard = () => {
             <div className="px-6 relative z-20 max-w-2xl mx-auto">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20 gap-4">
-                        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-yellow-500"></div>
-                        <p className="text-zinc-600 font-bold text-xs uppercase tracking-widest animate-pulse">Calculating Ranks...</p>
+                        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#FE4F4F]"></div>
+                        <p className="text-stone-500 font-bold text-xs uppercase tracking-widest animate-pulse">Calculating Ranks...</p>
                     </div>
                 ) : leaderboardData.length === 0 ? (
-                    <div className="text-center py-20 bg-white/5 rounded-[2rem] border border-white/5">
-                        <Trophy className="w-12 h-12 text-zinc-700 mx-auto mb-4" />
-                        <p className="text-zinc-500 font-bold">No data available yet.</p>
+                    <div className="text-center py-20 bg-[#FFFDF9] rounded-[2rem] border border-[#FE4F4F]/15 shadow-sm">
+                        <Trophy className="w-12 h-12 text-[#FE4F4F]/30 mx-auto mb-4" />
+                        <p className="text-stone-500 font-bold">No data available yet.</p>
                     </div>
                 ) : (
                     <>
                         {/* Podium (Top 3) */}
                         <div className="grid grid-cols-3 gap-4 items-end mb-12 relative">
                             {/* Glow behind podium */}
-                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-yellow-500/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+                            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FE4F4F]/5 to-transparent blur-3xl rounded-full pointer-events-none" />
 
                             {/* 2nd Place */}
                             {leaderboardData[1] && (
@@ -188,16 +188,16 @@ const Leaderboard = () => {
                                     className="flex flex-col items-center relative z-10"
                                 >
                                     <div className="relative mb-4">
-                                        <div className="w-16 h-16 rounded-2xl border border-zinc-700 bg-[#151518] flex items-center justify-center font-bold text-zinc-400 shadow-2xl relative rotate-3">
+                                        <div className="w-16 h-16 rounded-2xl border border-[#FE4F4F]/15 bg-[#FFFDF9] flex items-center justify-center font-bold text-stone-700 shadow-lg relative rotate-3">
                                             {leaderboardData[1].avatar}
                                         </div>
-                                        <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#C0C0C0] text-black text-xs font-black flex items-center justify-center rounded-lg shadow-lg border border-white/20 rotate-[-10deg]">2</div>
+                                        <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#C0C0C0] text-white text-xs font-black flex items-center justify-center rounded-lg shadow-md rotate-[-10deg] border-0">2</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="font-bold text-sm text-zinc-300 mb-1">{leaderboardData[1].name.split(" ")[0]}</div>
-                                        <div className="text-xs font-black text-[#C0C0C0] tracking-wider">{getDisplayValue(leaderboardData[1])}</div>
+                                        <div className="font-bold text-sm text-stone-700 mb-1">{leaderboardData[1].name.split(" ")[0]}</div>
+                                        <div className="text-xs font-black text-stone-500 tracking-wider">{getDisplayValue(leaderboardData[1])}</div>
                                     </div>
-                                    <div className="mt-4 h-24 w-full bg-gradient-to-t from-zinc-800/20 to-transparent rounded-t-2xl border-x border-t border-white/5" />
+                                    <div className="mt-4 h-24 w-full bg-gradient-to-t from-[#FE4F4F]/10 to-transparent rounded-t-2xl border-x border-t border-[#FE4F4F]/10" />
                                 </motion.div>
                             )}
 
@@ -210,16 +210,16 @@ const Leaderboard = () => {
                                     className="flex flex-col items-center relative z-20 scale-110"
                                 >
                                     <div className="relative mb-5">
-                                        <div className="w-20 h-20 rounded-2xl border border-yellow-500/30 bg-gradient-to-b from-[#1a1500] to-black flex items-center justify-center font-bold text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)] relative">
+                                        <div className="w-20 h-20 rounded-2xl border border-[#FE4F4F]/30 bg-gradient-to-b from-[#FFFDF9] to-[#FCF6EC] flex items-center justify-center font-bold text-[#FE4F4F] shadow-lg shadow-red-200/10 relative">
                                             {leaderboardData[0].avatar}
                                         </div>
-                                        <div className="absolute -top-4 -right-4 w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 text-black text-sm font-black flex items-center justify-center rounded-xl shadow-lg border border-white/20 rotate-[15deg]">1</div>
+                                        <div className="absolute -top-4 -right-4 w-10 h-10 bg-gradient-to-br from-[#FE4F4F] to-[#FF7878] text-white text-sm font-black flex items-center justify-center rounded-xl shadow-lg border-0 rotate-[15deg]">1</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="font-bold text-base text-white mb-1">{leaderboardData[0].name.split(" ")[0]}</div>
-                                        <div className="text-sm font-black text-yellow-500 tracking-wider shadow-yellow-500/50 drop-shadow-sm">{getDisplayValue(leaderboardData[0])}</div>
+                                        <div className="font-bold text-base text-[#FE4F4F] mb-1">{leaderboardData[0].name.split(" ")[0]}</div>
+                                        <div className="text-sm font-black text-[#FE4F4F] tracking-wider drop-shadow-sm">{getDisplayValue(leaderboardData[0])}</div>
                                     </div>
-                                    <div className="mt-4 h-32 w-full bg-gradient-to-t from-yellow-500/10 to-transparent rounded-t-2xl border-x border-t border-yellow-500/10 shadow-[0_0_20px_rgba(234,179,8,0.05)]" />
+                                    <div className="mt-4 h-32 w-full bg-gradient-to-t from-[#FE4F4F]/15 to-transparent rounded-t-2xl border-x border-t border-[#FE4F4F]/15 shadow-[0_0_20px_rgba(254,79,79,0.05)]" />
                                 </motion.div>
                             )}
 
@@ -232,16 +232,16 @@ const Leaderboard = () => {
                                     className="flex flex-col items-center relative z-10"
                                 >
                                     <div className="relative mb-4">
-                                        <div className="w-16 h-16 rounded-2xl border border-zinc-700 bg-[#151518] flex items-center justify-center font-bold text-zinc-500 shadow-2xl relative -rotate-3">
+                                        <div className="w-16 h-16 rounded-2xl border border-[#FE4F4F]/15 bg-[#FFFDF9] flex items-center justify-center font-bold text-stone-700 shadow-lg relative -rotate-3">
                                             {leaderboardData[2].avatar}
                                         </div>
-                                        <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#CD7F32] text-black text-xs font-black flex items-center justify-center rounded-lg shadow-lg border border-white/20 rotate-[5deg]">3</div>
+                                        <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#CD7F32] text-white text-xs font-black flex items-center justify-center rounded-lg shadow-md rotate-[5deg] border-0">3</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="font-bold text-sm text-zinc-300 mb-1">{leaderboardData[2].name.split(" ")[0]}</div>
-                                        <div className="text-xs font-black text-[#CD7F32] tracking-wider">{getDisplayValue(leaderboardData[2])}</div>
+                                        <div className="font-bold text-sm text-stone-700 mb-1">{leaderboardData[2].name.split(" ")[0]}</div>
+                                        <div className="text-xs font-black text-stone-500 tracking-wider">{getDisplayValue(leaderboardData[2])}</div>
                                     </div>
-                                    <div className="mt-4 h-20 w-full bg-gradient-to-t from-zinc-800/20 to-transparent rounded-t-2xl border-x border-t border-white/5" />
+                                    <div className="mt-4 h-20 w-full bg-gradient-to-t from-[#FE4F4F]/10 to-transparent rounded-t-2xl border-x border-t border-[#FE4F4F]/10" />
                                 </motion.div>
                             )}
                         </div>
@@ -255,28 +255,28 @@ const Leaderboard = () => {
                                     animate={{ x: 0, opacity: 1 }}
                                     transition={{ delay: 0.4 + i * 0.05 }}
                                     className={`p-4 rounded-2xl border flex items-center gap-4 transition-all group backdrop-blur-sm ${currentUser?.uid === user.id
-                                        ? "bg-white/10 border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-                                        : "bg-[#0c0c0e] border-white/5 hover:bg-white/5"
+                                        ? "bg-[#FE4F4F]/10 border-[#FE4F4F]/20 shadow-md shadow-red-200/5"
+                                        : "bg-[#FFFDF9] border-[#FE4F4F]/10 hover:bg-[#FE4F4F]/5 hover:border-[#FE4F4F]/20"
                                         }`}
                                 >
-                                    <div className="font-bold text-zinc-600 w-6 text-center text-sm font-mono">
+                                    <div className="font-bold text-stone-500 w-6 text-center text-sm font-mono">
                                         {user.rank}
                                     </div>
-                                    <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-xs font-bold text-zinc-400 border border-white/10 shadow-inner">
+                                    <div className="w-10 h-10 rounded-xl bg-[#FCF6EC] flex items-center justify-center text-xs font-bold text-stone-600 border border-[#FE4F4F]/10 shadow-inner">
                                         {user.avatar}
                                     </div>
                                     <div className="flex-1">
-                                        <div className="font-bold text-white flex items-center gap-2 text-sm">
+                                        <div className="font-bold text-[#2C2520] flex items-center gap-2 text-sm">
                                             {user.name}
-                                            {currentUser?.uid === user.id && <span className="text-[9px] bg-white text-black px-1.5 py-0.5 rounded font-bold uppercase tracking-wide">You</span>}
+                                            {currentUser?.uid === user.id && <span className="text-[9px] bg-[#FE4F4F] text-white px-1.5 py-0.5 rounded font-bold uppercase tracking-wide">You</span>}
                                         </div>
-                                        <div className="text-[10px] text-zinc-500 flex gap-2 font-medium">
+                                        <div className="text-[10px] text-stone-500 flex gap-2 font-medium">
                                             <span>Lvl {user.level}</span>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="font-bold text-white tracking-tight">{getDisplayValue(user)}</div>
-                                        <div className="text-[9px] text-zinc-500 uppercase font-bold tracking-wider">{getDisplayUnit()}</div>
+                                        <div className="font-bold text-[#FE4F4F] tracking-tight">{getDisplayValue(user)}</div>
+                                        <div className="text-[9px] text-stone-500 uppercase font-bold tracking-wider">{getDisplayUnit()}</div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -293,30 +293,30 @@ const Leaderboard = () => {
                     transition={{ delay: 0.8 }}
                     className="fixed bottom-24 md:bottom-10 left-1/2 md:left-auto md:right-10 -translate-x-1/2 md:translate-x-0 w-[88%] max-w-sm md:w-80 z-40"
                 >
-                    <div className="bg-black/60 backdrop-blur-2xl p-1.5 rounded-[2rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10 ring-1 ring-white/5 relative group overflow-hidden">
+                    <div className="bg-[#FFFDF9]/95 backdrop-blur-2xl p-1.5 rounded-[2rem] shadow-xl shadow-red-200/10 border border-[#FE4F4F]/15 ring-1 ring-[#FE4F4F]/5 relative group overflow-hidden">
                         {/* Animated background accent */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#FE4F4F]/5 via-transparent to-[#FE4F4F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                        <div className="bg-zinc-900/50 rounded-[1.6rem] p-3 flex items-center gap-4 border border-white/5 relative z-10 transition-all duration-300">
-                            <div className="flex flex-col items-center justify-center min-w-[48px] h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/20 shadow-inner">
-                                <span className="text-[9px] font-black text-yellow-500/50 uppercase leading-none mb-0.5">Rank</span>
-                                <span className="text-xl font-black text-yellow-500 leading-none">#{userRank.rank}</span>
+                        <div className="bg-[#FCF6EC]/85 rounded-[1.6rem] p-3 flex items-center gap-4 border border-[#FE4F4F]/10 relative z-10 transition-all duration-300">
+                            <div className="flex flex-col items-center justify-center min-w-[48px] h-12 rounded-xl bg-[#FE4F4F]/10 border border-[#FE4F4F]/25 shadow-inner">
+                                <span className="text-[9px] font-black text-[#FE4F4F]/60 uppercase leading-none mb-0.5">Rank</span>
+                                <span className="text-xl font-black text-[#FE4F4F] leading-none">#{userRank.rank}</span>
                             </div>
 
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
-                                    <span className="font-black text-white text-sm">YOU</span>
-                                    <div className="w-1 h-1 rounded-full bg-zinc-600" />
-                                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest truncate">Lvl {userRank.level || 1}</span>
+                                    <span className="font-black text-[#2C2520] text-sm">YOU</span>
+                                    <div className="w-1 h-1 rounded-full bg-[#FE4F4F]/30" />
+                                    <span className="text-[10px] font-bold text-stone-500 uppercase tracking-widest truncate">Lvl {userRank.level || 1}</span>
                                 </div>
-                                <div className="text-[11px] text-zinc-400 font-bold truncate">
+                                <div className="text-[11px] text-stone-600 font-bold truncate">
                                     {Number(userRank.rank) <= 10 ? "Top Tier Performer" : "Rising Star"}
                                 </div>
                             </div>
 
-                            <div className="text-right pl-2 border-l border-white/5">
-                                <div className="font-black text-white text-base tracking-tighter leading-none mb-1">{getDisplayValue(userRank)}</div>
-                                <div className="text-[9px] text-yellow-500/80 uppercase font-black tracking-widest leading-none">{getDisplayUnit()}</div>
+                            <div className="text-right pl-2 border-l border-[#FE4F4F]/10">
+                                <div className="font-black text-[#FE4F4F] text-base tracking-tighter leading-none mb-1">{getDisplayValue(userRank)}</div>
+                                <div className="text-[9px] text-[#FE4F4F]/80 uppercase font-black tracking-widest leading-none">{getDisplayUnit()}</div>
                             </div>
                         </div>
                     </div>
@@ -324,7 +324,7 @@ const Leaderboard = () => {
             )}
 
             {/* Footer Gradient Fade */}
-            <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020204] to-transparent pointer-events-none z-10" />
+            <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#FCF6EC] to-transparent pointer-events-none z-10" />
 
         </PageTransition>
     );

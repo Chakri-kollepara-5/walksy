@@ -13,7 +13,7 @@ service cloud.firestore {
 
     // Users Collection
     match /users/{userId} {
-      allow read: if isAuthenticated(); // Allow any auth user to read profiles (needed for task assignment)
+      allow read: if true; // Allow anyone to read profiles (needed for landing page stats and task assignment)
       allow create: if isAuthenticated() && request.auth.uid == userId;
       allow update: if isOwner(userId);
       allow delete: if false; // Prevent accidental deletion

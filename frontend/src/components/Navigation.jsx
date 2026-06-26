@@ -13,15 +13,15 @@ const Navigation = () => {
 
     return (
         <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-            <nav className="flex items-center gap-1 p-1.5 bg-black/80 backdrop-blur-xl border border-white/10 shadow-2xl rounded-full pointer-events-auto ring-1 ring-white/5">
+            <nav className="flex items-center gap-1 p-1.5 bg-[#FFFDF9]/95 backdrop-blur-xl border border-[#FE4F4F]/15 shadow-xl shadow-red-200/5 rounded-full pointer-events-auto ring-1 ring-[#FE4F4F]/5">
                 {navItems.map((item) => (
                     <NavLink
                         key={item.path}
                         to={item.path}
                         className={({ isActive }) =>
                             `relative px-5 py-3 rounded-full transition-all duration-300 ${isActive
-                                ? "text-white"
-                                : "text-zinc-500 hover:text-white hover:bg-white/5"
+                                ? "text-[#FE4F4F]"
+                                : "text-stone-500 hover:text-[#FE4F4F] hover:bg-[#FE4F4F]/5"
                             }`
                         }
                     >
@@ -31,7 +31,7 @@ const Navigation = () => {
                                 {isActive && (
                                     <motion.div
                                         layoutId="nav-bg"
-                                        className="absolute inset-0 bg-white/10 rounded-full -z-10 border border-white/5"
+                                        className="absolute inset-0 bg-[#FE4F4F]/10 rounded-full -z-10 border border-[#FE4F4F]/10"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ duration: 0.2 }}
@@ -40,7 +40,7 @@ const Navigation = () => {
                                 {isActive && (
                                     <motion.span
                                         layoutId="nav-indicator"
-                                        className="absolute -bottom-1.5 w-1 h-1 bg-orange-500 rounded-full box-content border-2 border-black"
+                                        className="absolute -bottom-1.5 w-1.5 h-1.5 bg-[#FE4F4F] rounded-full box-content border-2 border-[#FCF6EC]"
                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                     />
                                 )}

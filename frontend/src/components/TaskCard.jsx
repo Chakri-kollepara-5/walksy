@@ -54,7 +54,7 @@ const UndoAcceptanceButton = ({ task, user }) => {
                 size="sm"
                 onClick={handleUndo}
                 disabled={canceling}
-                className="w-full text-red-400 hover:text-red-300 hover:bg-red-500/10 h-auto py-2 text-xs uppercase tracking-wider font-bold border border-red-500/20"
+                className="w-full text-[#FE4F4F] hover:text-[#E03A3A] hover:bg-[#FE4F4F]/5 h-auto py-2 text-xs uppercase tracking-wider font-bold border border-[#FE4F4F]/20"
             >
                 <AlertCircle size={12} className="mr-1.5" />
                 {canceling ? "Canceling..." : `Undo (${timeLeft}s)`}
@@ -62,8 +62,8 @@ const UndoAcceptanceButton = ({ task, user }) => {
         );
     }
     return (
-        <div className="w-full py-2 flex items-center justify-center gap-2 text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-            <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+        <div className="w-full py-2 flex items-center justify-center gap-2 text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 rounded-lg border border-emerald-500/30">
+            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
             Locked In
         </div>
     );
@@ -92,10 +92,10 @@ const TaskCard = ({ task, onAccept }) => {
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ y: -6, scale: 1.01 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="group relative w-full rounded-[24px] bg-[#0c0c0e] border border-white/[0.08] hover:border-orange-500/30 overflow-hidden transition-all duration-500 shadow-xl shadow-black/40"
+            className="group relative w-full rounded-[24px] bg-[#FFFDF9] border border-[#FE4F4F]/15 hover:border-[#FE4F4F]/60 overflow-hidden transition-all duration-500 shadow-lg shadow-red-200/5"
         >
             {/* Ambient Hover Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FE4F4F]/5 via-transparent to-[#FE4F4F]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
             {/* Top Shine Effect */}
             <div className="absolute -top-[100px] -left-[100px] w-[200px] h-[200px] bg-white/5 blur-[80px] group-hover:bg-white/10 transition-all duration-700" />
@@ -107,7 +107,7 @@ const TaskCard = ({ task, onAccept }) => {
                 <div className="flex justify-between items-start mb-5">
                     <div className="flex items-center gap-3">
                         <div className="relative">
-                            <Avatar className="h-11 w-11 border-2 border-black ring-1 ring-white/10">
+                            <Avatar className="h-11 w-11 border-2 border-[#FCF6EC] ring-1 ring-[#FE4F4F]/15">
                                 <AvatarImage
                                     src={task.creatorPhotoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=${task.creatorName}`}
                                     crossOrigin="anonymous"
@@ -115,19 +115,19 @@ const TaskCard = ({ task, onAccept }) => {
                                 />
                                 <AvatarFallback className="bg-zinc-800 text-zinc-400"><User size={18} /></AvatarFallback>
                             </Avatar>
-                            <div className="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5">
-                                <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-black" />
+                            <div className="absolute -bottom-1 -right-1 bg-[#FCF6EC] rounded-full p-0.5">
+                                <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-[#FCF6EC]" />
                             </div>
                         </div>
                         <div>
-                            <p className="text-[9px] text-zinc-500 uppercase tracking-wider font-medium mb-0.5">Posted by</p>
-                            <h4 className="font-bold text-white text-sm tracking-tight">{task.creatorName || "Anonymous"}</h4>
+                            <p className="text-[9px] text-stone-400 uppercase tracking-wider font-medium mb-0.5">Posted by</p>
+                            <h4 className="font-bold text-[#2C2520] text-sm tracking-tight">{task.creatorName || "Anonymous"}</h4>
                             <div className="flex items-center gap-2 mt-0.5">
-                                <span className="text-[10px] text-zinc-500 font-medium flex items-center gap-1 uppercase tracking-wider">
+                                <span className="text-[10px] text-stone-500 font-medium flex items-center gap-1 uppercase tracking-wider">
                                     {task.createdAt ? timeAgo(task.createdAt) : "New"}
                                 </span>
                                 {task.isNew && (
-                                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-orange-500 text-[9px] font-black text-white uppercase tracking-wide shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+                                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#FE4F4F] to-[#FF7878] text-[9px] font-black text-white uppercase tracking-wide shadow-[0_0_10px_rgba(254,79,79,0.2)]">
                                         NEW
                                     </span>
                                 )}
@@ -139,14 +139,14 @@ const TaskCard = ({ task, onAccept }) => {
                         <div className={`
                             relative overflow-hidden px-4 py-2 rounded-xl border backdrop-blur-md flex items-center gap-2
                             ${isHighValue
-                                ? "bg-orange-950/30 border-orange-500/30 shadow-[0_0_15px_rgba(249,115,22,0.15)]"
-                                : "bg-white/5 border-white/10"}
+                                ? "bg-[#FE4F4F]/10 border-[#FE4F4F]/30 shadow-md shadow-red-200/10"
+                                : "bg-[#FCF6EC] border-[#FE4F4F]/15"}
                         `}>
-                            {isHighValue && <div className="absolute inset-0 bg-orange-500/10 animate-pulse" />}
-                            <span className={`text-[10px] font-bold uppercase tracking-wider ${isHighValue ? "text-orange-400" : "text-zinc-400"}`}>
+                            {isHighValue && <div className="absolute inset-0 bg-[#FE4F4F]/5 animate-pulse" />}
+                            <span className={`text-[10px] font-bold uppercase tracking-wider ${isHighValue ? "text-[#FE4F4F]" : "text-stone-500"}`}>
                                 Reward
                             </span>
-                            <div className={`flex items-baseline gap-0.5 font-black text-lg ${isHighValue ? "text-orange-200" : "text-white"}`}>
+                            <div className={`flex items-baseline gap-0.5 font-black text-lg ${isHighValue ? "text-[#FE4F4F] font-extrabold" : "text-[#2C2520]"}`}>
                                 <span className="text-sm opacity-70">₹</span>{task.reward}
                             </div>
                         </div>
@@ -158,50 +158,50 @@ const TaskCard = ({ task, onAccept }) => {
                     <div className="flex items-center gap-2 mb-2">
                         <div className={`
                             px-2 py-0.5 rounded-full border text-[10px] font-bold uppercase tracking-wider
-                            ${task.category === 'delivery' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' :
-                                task.category === 'shopping' ? 'bg-purple-500/10 border-purple-500/20 text-purple-400' :
-                                    'bg-zinc-800 border-zinc-700 text-zinc-400'}
+                            ${task.category === 'delivery' ? 'bg-blue-50 border-blue-200 text-blue-600' :
+                                task.category === 'shopping' ? 'bg-purple-50 border-purple-200 text-purple-600' :
+                                    'bg-stone-100 border-stone-200 text-stone-600'}
                         `}>
                             {task.category || 'General'}
                         </div>
                         {isHighValue && (
-                            <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-orange-500/30 text-[10px] font-bold text-orange-300 uppercase tracking-wide">
+                            <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FE4F4F]/10 border border-[#FE4F4F]/25 text-[10px] font-bold text-[#FE4F4F] uppercase tracking-wide">
                                 Hot
                             </span>
                         )}
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2 leading-tight group-hover:text-orange-100 transition-colors">
+                    <h3 className="text-xl font-bold text-[#FE4F4F] mb-2 leading-tight group-hover:text-[#E03A3A] transition-colors font-condensed">
                         {task.title}
                     </h3>
-                    <p className="text-sm text-zinc-400 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-stone-600 line-clamp-2 leading-relaxed">
                         {task.description}
                     </p>
                 </div>
 
                 {/* Route Visualizer */}
-                <div className="mt-auto bg-black/40 rounded-xl p-4 border border-white/5 relative mb-6">
+                <div className="mt-auto bg-[#FCF6EC]/80 rounded-xl p-4 border border-[#FE4F4F]/10 relative mb-6 shadow-inner">
                     {/* Path line */}
-                    <div className="absolute left-[27px] top-[32px] bottom-[32px] w-0.5 border-l border-dashed border-zinc-700" />
+                    <div className="absolute left-[27px] top-[32px] bottom-[32px] w-0.5 border-l border-dashed border-[#FE4F4F]/30" />
 
                     <div className="space-y-4">
                         <div className="flex gap-3 items-start relative z-10">
-                            <div className="h-2 w-2 mt-1.5 rounded-full bg-zinc-800 border border-zinc-600 ring-4 ring-black" />
+                            <div className="h-2 w-2 mt-1.5 rounded-full bg-[#FCF6EC] border border-[#FE4F4F]/30 ring-4 ring-[#FFFDF9]" />
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-0.5">From</p>
-                                <p className="text-xs font-medium text-zinc-300 truncate">{task.pickupLocation || "Pickup Point"}</p>
+                                <p className="text-[10px] text-stone-400 font-bold uppercase tracking-wider mb-0.5">From</p>
+                                <p className="text-xs font-medium text-stone-700 truncate">{task.pickupLocation || "Pickup Point"}</p>
                             </div>
                         </div>
                         <div className="flex gap-3 items-start relative z-10">
-                            <div className="h-2 w-2 mt-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)] ring-4 ring-black" />
+                            <div className="h-2 w-2 mt-1.5 rounded-full bg-[#FE4F4F] shadow-[0_0_8px_rgba(254,79,79,0.3)] ring-4 ring-[#FFFDF9]" />
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-0.5">To</p>
-                                <p className="text-xs font-medium text-zinc-300 truncate">{task.dropLocation || "Drop Point"}</p>
+                                <p className="text-[10px] text-stone-400 font-bold uppercase tracking-wider mb-0.5">To</p>
+                                <p className="text-xs font-medium text-stone-700 truncate">{task.dropLocation || "Drop Point"}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between">
-                        <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-medium bg-white/5 px-2 py-1 rounded-lg">
+                    <div className="mt-3 pt-3 border-t border-[#FE4F4F]/10 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 text-[#FE4F4F] text-xs font-medium bg-[#FE4F4F]/5 px-2 py-1 rounded-lg">
                             <Navigation size={12} /> {task.distance} km
                         </div>
                         <TaskMapModal task={task} />
@@ -225,23 +225,23 @@ const TaskCard = ({ task, onAccept }) => {
                                 animate={{ opacity: 1 }}
                             >
                                 {task.status === 'open' ? (
-                                    <div className="w-full h-11 rounded-xl border border-dashed border-zinc-700 bg-white/5 flex items-center justify-center gap-2 text-xs font-medium text-zinc-400">
+                                    <div className="w-full h-11 rounded-xl border border-dashed border-[#FE4F4F]/30 bg-[#FE4F4F]/5 flex items-center justify-center gap-2 text-xs font-medium text-[#FE4F4F]/70">
                                         <Clock size={14} className="animate-spin-slow" /> Awaiting Runner...
                                     </div>
                                 ) : (task.status === 'accepted' || task.status === 'in_progress') ? (
-                                    <div className="w-full p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-500/20 flex flex-col items-center justify-center text-center">
-                                        <p className="text-[10px] uppercase font-bold text-blue-300 mb-1 tracking-widest">Secret OTP</p>
-                                        <p className="text-xl font-mono font-black text-white tracking-[0.2em] shadow-black drop-shadow-md">{task.deliveryOTP}</p>
+                                    <div className="w-full p-4 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 flex flex-col items-center justify-center text-center">
+                                        <p className="text-[10px] uppercase font-bold text-emerald-700 mb-1 tracking-widest">Secret OTP</p>
+                                        <p className="text-xl font-mono font-black text-emerald-800 tracking-[0.2em] font-extrabold">{task.deliveryOTP}</p>
                                     </div>
                                 ) : (
-                                    <div className="w-full h-11 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center gap-2 text-green-400 font-bold text-sm">
+                                    <div className="w-full h-11 rounded-xl bg-emerald-50 border border-emerald-500/20 flex items-center justify-center gap-2 text-emerald-600 font-bold text-sm">
                                         <CheckCircle size={16} /> Task Complete
                                     </div>
                                 )}
                             </motion.div>
                         ) : task.status === 'completed' ? (
                             <motion.div key="completed" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                                <div className="w-full h-11 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center gap-2 text-green-400 font-bold text-sm">
+                                <div className="w-full h-11 rounded-xl bg-emerald-50 border border-emerald-500/20 flex items-center justify-center gap-2 text-emerald-600 font-bold text-sm">
                                     <CheckCircle size={16} /> Completed
                                 </div>
                             </motion.div>
@@ -249,7 +249,7 @@ const TaskCard = ({ task, onAccept }) => {
                             <motion.div key="accept" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                                 <Button
                                     onClick={() => onAccept(task.id)}
-                                    className="w-full h-12 rounded-xl bg-white text-black hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 font-bold text-sm group/btn border-0"
+                                    className="w-full h-12 rounded-xl bg-[#FE4F4F] hover:bg-[#E03A3A] text-white shadow-md shadow-red-200/20 transition-all duration-300 font-bold text-sm group/btn border-0"
                                 >
                                     Accept Task <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                                 </Button>
@@ -262,7 +262,7 @@ const TaskCard = ({ task, onAccept }) => {
                                         <UndoAcceptanceButton task={task} user={user} />
                                     </>
                                 ) : (
-                                    <div className="w-full h-11 rounded-xl bg-red-500/5 border border-red-500/10 flex items-center justify-center text-xs font-medium text-red-300/50">
+                                    <div className="w-full h-11 rounded-xl bg-stone-100 border border-stone-200 text-stone-400 flex items-center justify-center text-xs font-medium">
                                         Currently Reserved
                                     </div>
                                 )}

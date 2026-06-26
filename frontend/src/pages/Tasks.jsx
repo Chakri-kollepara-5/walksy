@@ -155,19 +155,19 @@ const Tasks = () => {
     });
 
     return (
-        <PageTransition id="tasks-container" className="min-h-screen bg-[#020204] pb-40 relative text-white selection:bg-orange-500/30 overflow-hidden">
+        <PageTransition id="tasks-container" className="min-h-screen bg-[#FCF6EC] pb-40 relative text-[#2C2520] selection:bg-[#FE4F4F]/30 overflow-hidden bg-grid-dotted">
 
             {/* Ambient Background Effects */}
-            <div className="fixed top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-blue-900/10 to-transparent pointer-events-none" />
-            <div className="fixed top-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-600/10 blur-[120px] rounded-full pointer-events-none animate-pulse-slow" />
+            <div className="fixed top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-[#FE4F4F]/5 to-transparent pointer-events-none" />
+            <div className="fixed top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#FE4F4F]/5 blur-[120px] rounded-full pointer-events-none" />
 
             {/* HEADER - Cinematic Glass */}
-            <header className="sticky top-0 z-40 bg-[#020204]/80 backdrop-blur-xl border-b border-white/5 pt-6 pb-4 px-6 md:px-10 transition-all">
+            <header className="sticky top-0 z-40 bg-[#FCF6EC]/80 backdrop-blur-xl border-b border-[#FE4F4F]/10 pt-6 pb-4 px-6 md:px-10 transition-all">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-6">
                         <div>
                             <div className="flex flex-col gap-2">
-                                <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
+                                <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-[#FE4F4F] font-condensed">
                                     TASKS
                                 </h1>
                                 <div className="flex items-center gap-3 mt-1">
@@ -175,9 +175,9 @@ const Tasks = () => {
                                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                                         <span className="text-emerald-500 font-bold tracking-[0.2em] text-[10px] uppercase">Radar Online</span>
                                     </div>
-                                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                                        <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-wider">
-                                            <span className="text-white">{filteredTasks.length}</span> Opportunities Found
+                                    <div className="px-3 py-1 rounded-full bg-[#FFFDF9] border border-[#FE4F4F]/15 shadow-sm">
+                                        <span className="text-[#FE4F4F]/80 font-bold text-[10px] uppercase tracking-wider">
+                                            <span className="text-[#FE4F4F]">{filteredTasks.length}</span> Opportunities Found
                                         </span>
                                     </div>
                                 </div>
@@ -188,12 +188,12 @@ const Tasks = () => {
                         <div className="flex items-center gap-4">
                             <PostTaskModal onSuccess={fetchTasks} />
 
-                            <div className="flex items-center bg-white/5 rounded-xl p-1 border border-white/5 shadow-inner">
+                            <div className="flex items-center bg-[#FFFDF9] rounded-xl p-1 border border-[#FE4F4F]/15 shadow-sm">
                                 <Button
                                     variant="ghost"
                                     size="sm"
                                     onClick={() => setViewMode("list")}
-                                    className={`rounded-lg h-9 w-9 p-0 transition-all duration-300 ${viewMode === "list" ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.2)]" : "text-zinc-500 hover:text-white hover:bg-white/5"}`}
+                                    className={`rounded-lg h-9 w-9 p-0 transition-all duration-300 ${viewMode === "list" ? "bg-[#FE4F4F] text-white shadow-sm" : "text-stone-500 hover:text-[#FE4F4F] hover:bg-[#FE4F4F]/5"}`}
                                 >
                                     <List size={18} />
                                 </Button>
@@ -201,7 +201,7 @@ const Tasks = () => {
                                     variant="ghost"
                                     size="sm"
                                     onClick={() => setViewMode("map")}
-                                    className={`rounded-lg h-9 w-9 p-0 transition-all duration-300 ${viewMode === "map" ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.2)]" : "text-zinc-500 hover:text-white hover:bg-white/5"}`}
+                                    className={`rounded-lg h-9 w-9 p-0 transition-all duration-300 ${viewMode === "map" ? "bg-[#FE4F4F] text-white shadow-sm" : "text-stone-500 hover:text-[#FE4F4F] hover:bg-[#FE4F4F]/5"}`}
                                 >
                                     <MapPin size={18} />
                                 </Button>
@@ -213,14 +213,14 @@ const Tasks = () => {
                     <div className="flex flex-col md:flex-row gap-4">
                         <div className="relative flex-1 group">
                             <Search
-                                className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 group-focus-within:text-white transition-colors"
+                                className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-[#FE4F4F] transition-colors"
                                 size={18}
                             />
                             <Input
                                 placeholder="Find tasks..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-11 bg-white/5 border-white/5 text-white placeholder:text-zinc-600 h-12 rounded-xl text-sm focus-visible:ring-1 focus-visible:ring-orange-500/50 focus:bg-white/10 transition-all font-medium"
+                                className="pl-11 bg-[#FFFDF9] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 h-12 rounded-xl text-sm focus-visible:ring-1 focus-visible:ring-[#FE4F4F]/50 focus:bg-[#FFFDF9] transition-all font-medium shadow-sm"
                             />
                         </div>
 
@@ -232,14 +232,14 @@ const Tasks = () => {
                                     onClick={() => setSelectedCategory(category.id)}
                                     className={`px-5 h-12 rounded-xl border font-bold text-xs tracking-wide transition-all duration-300 relative overflow-hidden group
                                         ${selectedCategory === category.id
-                                            ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                                            : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/20"
+                                            ? "bg-[#FE4F4F] text-white border-[#FE4F4F] shadow-md shadow-red-200/25"
+                                            : "bg-[#FFFDF9] text-stone-500 border-[#FE4F4F]/15 hover:bg-[#FE4F4F]/5 hover:text-[#FE4F4F] hover:border-[#FE4F4F]/30"
                                         }`}
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
                                         {category.label}
                                         {category.count > 0 && (
-                                            <span className={`px-1.5 py-0.5 rounded text-[9px] ${selectedCategory === category.id ? "bg-black text-white" : "bg-white/10"}`}>
+                                            <span className={`px-1.5 py-0.5 rounded text-[9px] ${selectedCategory === category.id ? "bg-white/20 text-white" : "bg-[#FE4F4F]/10 text-[#FE4F4F]"}`}>
                                                 {category.count}
                                             </span>
                                         )}
@@ -254,7 +254,7 @@ const Tasks = () => {
             {/* List View */}
             {viewMode === "list" && (
                 <div className="px-4 md:px-10 max-w-7xl mx-auto mt-8">
-                    <div className="flex items-center justify-between text-[10px] font-bold text-zinc-600 mb-6 px-1 uppercase tracking-[0.2em]">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-stone-500 mb-6 px-1 uppercase tracking-[0.2em]">
                         <span className="flex items-center gap-2">Hot Opportunities</span>
                         <div className="flex items-center gap-1 opacity-50">
                             <SlidersHorizontal size={10} /> Realtime
@@ -263,8 +263,8 @@ const Tasks = () => {
 
                     {loading ? (
                         <div className="flex flex-col justify-center items-center py-32 space-y-6">
-                            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-orange-500"></div>
-                            <p className="text-zinc-500 text-sm font-medium animate-pulse">Scanning network...</p>
+                            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#FE4F4F]"></div>
+                            <p className="text-stone-500 text-sm font-medium animate-pulse">Scanning network...</p>
                         </div>
                     ) : filteredTasks.length ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -283,12 +283,12 @@ const Tasks = () => {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-32 bg-white/5 rounded-[2rem] border border-dashed border-white/10 mx-4">
-                            <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/5">
-                                <Search size={32} className="text-zinc-600" />
+                        <div className="text-center py-32 bg-[#FFFDF9] rounded-[2rem] border-2 border-dashed border-[#FE4F4F]/15 mx-4 shadow-md shadow-red-200/5">
+                            <div className="w-20 h-20 bg-[#FE4F4F]/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#FE4F4F]/10">
+                                <Search size={32} className="text-[#FE4F4F]/50" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-2">No tasks found</h3>
-                            <p className="text-zinc-500 text-base max-w-xs mx-auto">
+                            <h3 className="text-2xl font-bold text-[#FE4F4F] mb-2 font-condensed">No tasks found</h3>
+                            <p className="text-stone-500 text-base max-w-xs mx-auto">
                                 The radar is empty. Try adjusting your filters or area.
                             </p>
                         </div>
@@ -299,8 +299,8 @@ const Tasks = () => {
             {/* Map View */}
             {viewMode === "map" && (
                 <div className="px-4 md:px-10 max-w-7xl mx-auto mt-6 h-[calc(100vh-220px)]">
-                    <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-black h-full bg-[#0a0a0c] relative">
-                        <div className="absolute inset-0 pointer-events-none border-[6px] border-white/5 rounded-[2rem] z-10" />
+                    <div className="rounded-[2rem] overflow-hidden border border-[#FE4F4F]/15 shadow-xl h-full bg-[#FFFDF9] relative">
+                        <div className="absolute inset-0 pointer-events-none border-[6px] border-[#FE4F4F]/5 rounded-[2rem] z-10" />
                         <MapView
                             tasks={filteredTasks.map(task => ({
                                 id: task._id || task.id,
@@ -318,7 +318,7 @@ const Tasks = () => {
             )}
 
             {/* Footer Gradient Fade */}
-            <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020204] to-transparent pointer-events-none z-10" />
+            <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#FCF6EC] to-transparent pointer-events-none z-10" />
 
             {/* Floating Scroll To Top */}
             <div className="hidden md:block fixed bottom-10 right-10 z-50">
@@ -354,7 +354,7 @@ const ScrollToTopButton = () => {
                     <Button
                         onClick={scrollToTop}
                         size="icon"
-                        className="rounded-full h-12 w-12 bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-110 cursor-pointer borderless"
+                        className="rounded-full h-12 w-12 bg-[#FE4F4F] hover:bg-[#E03A3A] text-white shadow-lg shadow-red-200/30 hover:scale-110 cursor-pointer borderless"
                     >
                         <ArrowUp size={20} />
                     </Button>

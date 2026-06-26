@@ -103,18 +103,18 @@ const Profile = () => {
     };
 
     return (
-        <PageTransition className="min-h-screen bg-[#020204] pb-32 relative text-white overflow-hidden">
+        <PageTransition className="min-h-screen bg-[#FCF6EC] pb-32 relative text-[#2C2520] overflow-hidden bg-grid-dotted">
 
             {/* Background Effects */}
-            <div className="fixed top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-black to-transparent pointer-events-none" />
-            <div className="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="fixed top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-[#FE4F4F]/5 to-transparent pointer-events-none" />
+            <div className="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#FE4F4F]/5 blur-[120px] rounded-full pointer-events-none" />
 
             {/* Cover Photo Area */}
             <div className="relative h-64 w-full overflow-hidden">
-                <div className="absolute inset-0 bg-[#0c0c0e]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020204] via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[#FCF6EC] border-b border-[#FE4F4F]/10 shadow-inner" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#FCF6EC] via-transparent to-transparent z-10" />
                 <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FE4F4F]/5 blur-[100px] rounded-full pointer-events-none" />
             </div>
 
             <div className="px-6 -mt-24 relative z-20 max-w-xl mx-auto">
@@ -124,28 +124,28 @@ const Profile = () => {
                     className="flex flex-col items-center mb-8"
                 >
                     <div className="relative group cursor-pointer" onClick={() => setEditOpen(true)}>
-                        <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 blur opacity-70 group-hover:opacity-100 transition-opacity" />
-                        <Avatar className="h-32 w-32 border-4 border-[#020204] relative">
+                        <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[#FE4F4F] to-[#FF7878] blur opacity-70 group-hover:opacity-100 transition-opacity" />
+                        <Avatar className="h-32 w-32 border-4 border-[#FCF6EC] ring-1 ring-[#FE4F4F]/15 relative">
                             <AvatarImage
                                 src={userData.photoURL}
                                 className="object-cover"
                                 crossOrigin="anonymous"
                                 referrerPolicy="no-referrer"
                             />
-                            <AvatarFallback className="text-4xl font-bold bg-[#151518] text-white">
+                            <AvatarFallback className="text-4xl font-bold bg-[#FFFDF9] text-[#FE4F4F]">
                                 {userData.name?.charAt(0).toUpperCase()}
                             </AvatarFallback>
                         </Avatar>
-                        <div className="absolute bottom-2 right-1 bg-emerald-500 w-5 h-5 rounded-full border-4 border-[#020204]" />
+                        <div className="absolute bottom-2 right-1 bg-emerald-500 w-5 h-5 rounded-full border-4 border-[#FCF6EC]" />
                         <div className="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
                             <Camera className="text-white w-8 h-8" />
                         </div>
                     </div>
 
-                    <h1 className="mt-4 text-3xl font-black text-white text-center tracking-tight">
+                    <h1 className="mt-4 text-3xl font-black text-[#FE4F4F] text-center tracking-tight font-condensed">
                         {userData.name}
                     </h1>
-                    <p className="text-zinc-500 font-medium text-sm flex items-center gap-1.5 mt-1">
+                    <p className="text-stone-500 font-medium text-sm flex items-center gap-1.5 mt-1">
                         <User size={12} /> {userData.email}
                     </p>
 
@@ -153,11 +153,11 @@ const Profile = () => {
                         <Button
                             size="sm"
                             onClick={() => setEditOpen(true)}
-                            className="rounded-full px-8 bg-white text-black hover:bg-zinc-200 font-bold tracking-wide h-10 border-0"
+                            className="rounded-full px-8 bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold tracking-wide h-10 border-0 shadow-md shadow-red-200/25"
                         >
                             Edit Profile
                         </Button>
-                        <Button size="icon" variant="outline" className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 text-white h-10 w-10">
+                        <Button size="icon" variant="outline" className="rounded-full bg-[#FFFDF9] border border-[#FE4F4F]/25 text-[#FE4F4F] hover:bg-[#FE4F4F]/5 h-10 w-10">
                             <Settings size={18} />
                         </Button>
                     </div>
@@ -168,18 +168,18 @@ const Profile = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 mb-8 relative overflow-hidden group shadow-2xl"
+                    className="bg-[#FFFDF9] border border-[#FE4F4F]/15 rounded-[2rem] p-6 mb-8 relative overflow-hidden group shadow-sm"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#FE4F4F]/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
                     <div className="relative z-10 flex items-center justify-between">
                         <div>
-                            <div className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">Total Balance</div>
-                            <div className="text-4xl font-black tracking-tighter text-white">₹{userData.wallet.toLocaleString()}</div>
+                            <div className="text-xs font-bold text-stone-500 uppercase tracking-widest mb-1">Total Balance</div>
+                            <div className="text-4xl font-black tracking-tighter text-[#FE4F4F] font-condensed">₹{userData.wallet.toLocaleString()}</div>
                         </div>
                         <Button
                             onClick={() => setWithdrawOpen(true)}
-                            className="bg-white text-black hover:bg-zinc-200 font-bold rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] border-0 h-12 px-6"
+                            className="bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold rounded-xl shadow-md shadow-red-200/25 border-0 h-12 px-6"
                         >
                             Withdraw
                         </Button>
@@ -198,14 +198,14 @@ const Profile = () => {
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.2 + i * 0.1 }}
-                            className="bg-[#0c0c0e] p-4 rounded-2xl border border-white/5 text-center flex flex-col items-center gap-3 group hover:border-white/10 transition-colors"
+                            className="bg-[#FFFDF9] p-4 rounded-2xl border border-[#FE4F4F]/10 text-center flex flex-col items-center gap-3 group hover:border-[#FE4F4F]/30 shadow-sm transition-colors"
                         >
-                            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 group-hover:text-white transition-colors">
+                            <div className="w-8 h-8 rounded-full bg-[#FE4F4F]/5 flex items-center justify-center text-[#FE4F4F] group-hover:bg-[#FE4F4F]/10 transition-colors">
                                 <stat.icon size={14} />
                             </div>
                             <div>
-                                <div className="text-lg font-black text-white">{stat.val}</div>
-                                <div className="text-[9px] text-zinc-500 uppercase font-bold tracking-wider">{stat.label}</div>
+                                <div className="text-lg font-black text-[#2C2520]">{stat.val}</div>
+                                <div className="text-[9px] text-stone-500 uppercase font-bold tracking-wider">{stat.label}</div>
                             </div>
                         </motion.div>
                     ))}
@@ -213,9 +213,9 @@ const Profile = () => {
 
                 {/* Menu */}
                 <div className="space-y-4">
-                    <h3 className="text-xs font-bold text-zinc-600 uppercase tracking-[0.2em] ml-2 mb-4">Settings</h3>
+                    <h3 className="text-sm font-bold text-[#FE4F4F] font-condensed uppercase tracking-wider ml-2 mb-4">Settings</h3>
 
-                    <div className="bg-[#0c0c0e] rounded-3xl border border-white/5 overflow-hidden">
+                    <div className="bg-[#FFFDF9] rounded-3xl border border-[#FE4F4F]/10 overflow-hidden shadow-sm">
                         {[
                             { icon: User, label: "Personal Information", action: () => setEditOpen(true) },
                             { icon: Shield, label: "Security & Privacy" },
@@ -224,15 +224,15 @@ const Profile = () => {
                             <div key={i}>
                                 <button
                                     onClick={item.action}
-                                    className="w-full flex items-center gap-4 p-5 hover:bg-white/5 transition-colors group"
+                                    className="w-full flex items-center gap-4 p-5 hover:bg-[#FE4F4F]/5 transition-colors group"
                                 >
-                                    <div className="p-2 bg-white/5 rounded-xl text-zinc-400 group-hover:text-white transition-colors">
+                                    <div className="p-2 bg-[#FCF6EC] rounded-xl text-[#FE4F4F] group-hover:text-[#E03A3A] transition-colors">
                                         <item.icon size={18} />
                                     </div>
-                                    <span className="flex-1 text-left font-bold text-sm text-zinc-300 group-hover:text-white transition-colors">{item.label}</span>
-                                    <ChevronRight size={16} className="text-zinc-600 group-hover:text-white transition-colors" />
+                                    <span className="flex-1 text-left font-bold text-sm text-[#2C2520] transition-colors">{item.label}</span>
+                                    <ChevronRight size={16} className="text-[#FE4F4F]/60 group-hover:text-[#FE4F4F] transition-colors" />
                                 </button>
-                                {i < 2 && <div className="h-[1px] bg-white/5 mx-5" />}
+                                {i < 2 && <div className="h-[1px] bg-[#FE4F4F]/10 mx-5" />}
                             </div>
                         ))}
                     </div>
@@ -241,7 +241,7 @@ const Profile = () => {
                 <Button
                     onClick={handleLogout}
                     disabled={loggingOut}
-                    className="mt-8 w-full flex items-center gap-2 bg-red-500/10 text-red-500 hover:bg-red-500/20 hover:text-red-400 rounded-2xl h-14 border border-red-500/20 font-bold"
+                    className="mt-8 w-full flex items-center gap-2 bg-[#FE4F4F]/10 text-[#FE4F4F] hover:bg-[#FE4F4F]/20 hover:text-[#E03A3A] rounded-2xl h-14 border border-[#FE4F4F]/20 font-bold"
                 >
                     <LogOut size={18} />
                     {loggingOut ? "Logging out..." : "Log Out"}
@@ -250,54 +250,54 @@ const Profile = () => {
 
             {/* EDIT PROFILE DIALOG */}
             <Dialog open={editOpen} onOpenChange={setEditOpen}>
-                <DialogContent className="rounded-3xl sm:max-w-md bg-[#0c0c0e] border-white/10 text-white p-6">
+                <DialogContent className="rounded-3xl sm:max-w-md bg-[#FFFDF9] border-[#FE4F4F]/20 text-[#2C2520] p-6 shadow-xl">
                     <DialogHeader>
-                        <DialogTitle className="text-xl font-bold">Edit Profile</DialogTitle>
-                        <DialogDescription className="text-zinc-500">
+                        <DialogTitle className="text-xl font-bold text-[#FE4F4F] font-condensed">Edit Profile</DialogTitle>
+                        <DialogDescription className="text-stone-500">
                             Update your public information.
                         </DialogDescription>
                     </DialogHeader>
 
                     <div className="space-y-4 py-4">
                         <div className="flex flex-col items-center gap-3 mb-4">
-                            <Avatar className="h-24 w-24 border-2 border-white/10">
+                            <Avatar className="h-24 w-24 border-2 border-[#FE4F4F]/10">
                                 <AvatarImage
                                     src={editForm.photoURL}
                                     className="object-cover"
                                     crossOrigin="anonymous"
                                     referrerPolicy="no-referrer"
                                 />
-                                <AvatarFallback className="bg-white/10 text-white text-2xl font-bold">{editForm.name?.charAt(0).toUpperCase()}</AvatarFallback>
+                                <AvatarFallback className="bg-[#FCF6EC] text-[#FE4F4F] text-2xl font-bold">{editForm.name?.charAt(0).toUpperCase()}</AvatarFallback>
                             </Avatar>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="name" className="text-zinc-400">Full Name</Label>
+                            <Label htmlFor="name" className="text-[#2C2520] font-bold">Full Name</Label>
                             <Input
                                 id="name"
                                 name="name"
                                 value={editForm.name}
                                 onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                                className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-zinc-600 h-11"
+                                className="rounded-xl bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 h-11 shadow-sm"
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="photo" className="text-zinc-400">Profile Picture URL</Label>
+                            <Label htmlFor="photo" className="text-[#2C2520] font-bold">Profile Picture URL</Label>
                             <Input
                                 id="photo"
                                 name="photo"
                                 value={editForm.photoURL}
                                 onChange={(e) => setEditForm({ ...editForm, photoURL: e.target.value })}
-                                className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-zinc-600 h-11"
+                                className="rounded-xl bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 h-11 shadow-sm"
                             />
                         </div>
                     </div>
 
                     <DialogFooter className="gap-3 sm:gap-2">
-                        <Button variant="ghost" className="flex-1 rounded-xl h-11 text-zinc-400 hover:text-white" onClick={() => setEditOpen(false)}>
+                        <Button variant="ghost" className="flex-1 rounded-xl h-11 text-stone-500 hover:text-[#FE4F4F]" onClick={() => setEditOpen(false)}>
                             Cancel
                         </Button>
-                        <Button onClick={handleSaveProfile} disabled={saving} className="flex-1 rounded-xl h-11 bg-white text-black hover:bg-zinc-200 font-bold border-0">
+                        <Button onClick={handleSaveProfile} disabled={saving} className="flex-1 rounded-xl h-11 bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold border-0 shadow-md shadow-red-200/25">
                             {saving ? "Saving..." : "Save Changes"}
                         </Button>
                     </DialogFooter>
@@ -306,17 +306,17 @@ const Profile = () => {
 
             {/* WITHDRAW DIALOG */}
             <Dialog open={withdrawOpen} onOpenChange={setWithdrawOpen}>
-                <DialogContent className="rounded-3xl sm:max-w-md bg-[#0c0c0e] border-white/10 text-white p-6">
+                <DialogContent className="rounded-3xl sm:max-w-md bg-[#FFFDF9] border-[#FE4F4F]/20 text-[#2C2520] p-6 shadow-xl">
                     <DialogHeader>
-                        <DialogTitle className="text-xl font-bold">Withdraw Funds</DialogTitle>
-                        <DialogDescription className="text-zinc-500">
+                        <DialogTitle className="text-xl font-bold text-[#FE4F4F] font-condensed">Withdraw Funds</DialogTitle>
+                        <DialogDescription className="text-stone-500">
                             Transfer earnings to your external account.
                         </DialogDescription>
                     </DialogHeader>
 
-                    <div className="bg-white/5 p-6 rounded-2xl border border-white/5 text-center py-8 mb-2">
-                        <div className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Available Balance</div>
-                        <div className="text-4xl font-black text-white">₹{userData.wallet}</div>
+                    <div className="bg-[#FCF6EC] p-6 rounded-2xl border border-[#FE4F4F]/10 text-center py-8 mb-2">
+                        <div className="text-xs font-bold text-stone-500 uppercase tracking-widest mb-2">Available Balance</div>
+                        <div className="text-4xl font-black text-[#FE4F4F] font-condensed">₹{userData.wallet}</div>
                     </div>
 
                     <Input
@@ -324,14 +324,14 @@ const Profile = () => {
                         placeholder="Enter amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        className="h-14 rounded-2xl text-xl text-center font-bold bg-black border-white/10 text-white placeholder:text-zinc-700"
+                        className="h-14 rounded-2xl text-xl text-center font-bold bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#FE4F4F] placeholder:text-stone-400"
                     />
 
                     <DialogFooter className="mt-4 gap-3 sm:gap-2">
-                        <Button variant="ghost" className="flex-1 rounded-xl h-12 text-zinc-400 hover:text-white" onClick={() => setWithdrawOpen(false)}>
+                        <Button variant="ghost" className="flex-1 rounded-xl h-12 text-stone-500 hover:text-[#FE4F4F]" onClick={() => setWithdrawOpen(false)}>
                             Cancel
                         </Button>
-                        <Button onClick={handleWithdraw} className="flex-1 rounded-xl h-12 bg-white text-black hover:bg-zinc-200 font-bold border-0">
+                        <Button onClick={handleWithdraw} className="flex-1 rounded-xl h-12 bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold border-0 shadow-md shadow-red-200/25">
                             Confirm Withdrawal
                         </Button>
                     </DialogFooter>

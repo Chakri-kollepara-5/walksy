@@ -80,24 +80,24 @@ const TaskSuccess = ({ task, onClose }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
-                className="mt-8 bg-gradient-to-br from-yellow-50 to-orange-50 border border-yellow-100 rounded-2xl p-6 w-full max-w-sm"
+                className="mt-8 bg-[#FCF6EC] border border-[#FE4F4F]/20 rounded-2xl p-6 w-full max-w-sm"
             >
-                <p className="text-sm font-bold text-yellow-700 uppercase tracking-widest mb-1">Tasks Earnings</p>
-                <div className="flex items-center justify-center gap-2 text-yellow-600 mb-4">
+                <p className="text-sm font-bold text-[#FE4F4F] uppercase tracking-widest mb-1">Tasks Earnings</p>
+                <div className="flex items-center justify-center gap-2 text-[#FE4F4F] mb-4">
                     <span className="text-4xl font-black">₹{task.reward}</span>
                 </div>
 
                 {totalEarnings !== null && (
-                    <div className="bg-white/60 rounded-xl p-3 border border-yellow-100">
-                        <p className="text-xs font-bold text-yellow-800 uppercase tracking-wider mb-1">New Wallet Balance</p>
-                        <div className="flex items-center justify-center gap-2 text-yellow-700">
+                    <div className="bg-[#FFFDF9] rounded-xl p-3 border border-[#FE4F4F]/10">
+                        <p className="text-xs font-bold text-stone-600 uppercase tracking-wider mb-1">New Wallet Balance</p>
+                        <div className="flex items-center justify-center gap-2 text-[#FE4F4F]">
                             <Wallet size={18} />
                             <span className="text-2xl font-black">₹{totalEarnings}</span>
                         </div>
                     </div>
                 )}
 
-                <div className="mt-4 pt-4 border-t border-yellow-200/50 text-xs text-yellow-800/80 font-medium">
+                <div className="mt-4 pt-4 border-t border-[#FE4F4F]/10 text-[#FE4F4F]/70 font-medium">
                     <p>Commission processed successfully.</p>
                     <p>Funds added to your wallet instantly.</p>
                 </div>
@@ -111,7 +111,7 @@ const TaskSuccess = ({ task, onClose }) => {
             >
                 <Button
                     onClick={onClose}
-                    className="w-full h-14 text-lg rounded-xl font-bold bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+                    className="w-full h-14 text-lg rounded-xl font-bold bg-[#FE4F4F] hover:bg-[#E03A3A] shadow-md shadow-red-200/25 border-0"
                 >
                     Awesome, Continue
                 </Button>

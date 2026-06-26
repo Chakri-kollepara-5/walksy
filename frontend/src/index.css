@@ -1,50 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  background: #020204;
-  margin: 0;
-  padding: 0;
-  color: white;
+.font-condensed {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
 }
 
-/* Walksy Design System - Hyper-Premium Dark UI */
+html,
+body {
+  background: #FCF6EC;
+  margin: 0;
+  padding: 0;
+  color: #2C2520;
+}
+
+/* Walksy Design System - Premium Light Cream & Red UI */
 
 @layer base {
   :root {
-    /* Deep Black Base */
-    --background: 240 10% 1%;
-    /* #020204 equivalent */
-    --foreground: 0 0% 98%;
+    /* Cream Base */
+    --background: 38 67% 96%;
+    /* #FCF6EC equivalent */
+    --foreground: 24 15% 15%;
+    /* #2C2520 equivalent */
 
     /* Cards & Surfaces */
-    --card: 240 10% 4%;
-    --card-foreground: 0 0% 98%;
-    --card-elevated: 240 10% 6%;
+    --card: 40 100% 99%;
+    /* #FFFDF9 equivalent */
+    --card-foreground: 24 15% 15%;
+    --card-elevated: 40 100% 98%;
 
     /* Popover */
-    --popover: 240 10% 4%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 40 100% 99%;
+    --popover-foreground: 24 15% 15%;
 
-    /* Primary - Vibrant Orange/Lava */
-    --primary: 24 95% 53%;
-    /* Orange-500 */
+    /* Primary - Vibrant Red/Coral */
+    --primary: 0 99% 65%;
+    /* #FE4F4F */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 32 95% 60%;
-    --primary-dark: 20 90% 45%;
+    --primary-light: 0 99% 72%;
+    --primary-dark: 0 90% 55%;
 
-    /* Secondary - Dark Gray/Glass */
-    --secondary: 240 5% 10%;
-    --secondary-foreground: 0 0% 98%;
+    /* Secondary - Light Warm Beige */
+    --secondary: 35 30% 91%;
+    /* #F2EAE0 */
+    --secondary-foreground: 0 99% 65%;
 
     /* Muted */
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 33 35% 92%;
+    --muted-foreground: 33 15% 45%;
 
-    /* Accent - Lava Glow */
-    --accent: 24 95% 53%;
+    /* Accent */
+    --accent: 0 99% 65%;
     --accent-foreground: 0 0% 100%;
 
     /* Success - Emerald */
@@ -60,20 +70,20 @@ body {
     --destructive-foreground: 0 0% 100%;
 
     /* Borders & Inputs */
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
-    --ring: 24 95% 53%;
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 0 99% 65%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #f97316, #fb923c);
-    --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-    --gradient-subtle: linear-gradient(180deg, #020204, #0a0a0c);
+    --gradient-primary: linear-gradient(135deg, #FE4F4F, #FF7878);
+    --gradient-card: linear-gradient(180deg, rgba(254, 79, 79, 0.02), rgba(254, 79, 79, 0));
+    --gradient-subtle: linear-gradient(180deg, #FCF6EC, #FFFDF9);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 2px 0 rgba(254, 79, 79, 0.05);
+    --shadow: 0 4px 6px -1px rgba(254, 79, 79, 0.08), 0 2px 4px -1px rgba(254, 79, 79, 0.04);
+    --shadow-md: 0 10px 15px -3px rgba(254, 79, 79, 0.1), 0 4px 6px -2px rgba(254, 79, 79, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(254, 79, 79, 0.12), 0 10px 10px -5px rgba(254, 79, 79, 0.06);
 
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -88,8 +98,8 @@ body {
   }
 
   body {
-    @apply bg-[#020204] text-foreground font-sans antialiased;
-    background-color: #020204;
+    @apply bg-[#FCF6EC] text-foreground font-sans antialiased;
+    background-color: #FCF6EC;
     min-height: 100vh;
   }
 
@@ -148,5 +158,15 @@ body {
 
   .shadow-clean-lg {
     box-shadow: var(--shadow-lg);
+  }
+
+  .bg-grid-dotted {
+    background-image: radial-gradient(rgba(254, 79, 79, 0.08) 1.2px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .bg-grid-dark-dotted {
+    background-image: radial-gradient(rgba(249, 115, 22, 0.08) 1.2px, transparent 0);
+    background-size: 24px 24px;
   }
 }

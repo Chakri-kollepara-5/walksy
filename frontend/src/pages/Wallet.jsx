@@ -88,25 +88,24 @@ const Wallet = () => {
     ];
 
     return (
-        <PageTransition className="min-h-screen bg-[#020204] pb-32 text-white selection:bg-orange-500/30 overflow-hidden font-sans">
+        <PageTransition className="min-h-screen bg-[#FCF6EC] pb-32 text-[#2C2520] selection:bg-[#FE4F4F]/30 overflow-hidden bg-grid-dotted relative font-sans">
 
             {/* Lava Aesthetic Background */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-orange-600/10 blur-[140px] rounded-full animate-pulse-slow" />
-                <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full" />
-                <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] bg-orange-400/5 blur-[100px] rounded-full animate-float" />
+                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#FE4F4F]/5 blur-[140px] rounded-full" />
+                <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-[#FE4F4F]/5 blur-[120px] rounded-full" />
             </div>
 
             <div className="relative z-10 max-w-2xl mx-auto px-6 pt-8">
                 {/* Header */}
                 <header className="flex items-center justify-between mb-10">
                     <div>
-                        <h1 className="text-3xl font-black tracking-tight flex items-center gap-3">
+                        <h1 className="text-3xl font-black tracking-tight flex items-center gap-3 text-[#FE4F4F] font-condensed">
                             Wallet
                         </h1>
-                        <p className="text-zinc-500 text-sm font-medium mt-1">Manage your earnings & rewards</p>
+                        <p className="text-stone-500 text-sm font-medium mt-1">Manage your earnings & rewards</p>
                     </div>
-                    <Button variant="outline" size="icon" className="rounded-2xl border-white/5 bg-white/5 hover:bg-white/10 text-white w-12 h-12">
+                    <Button variant="outline" size="icon" className="rounded-2xl border-[#FE4F4F]/15 bg-[#FFFDF9] hover:bg-[#FE4F4F]/5 text-[#FE4F4F] w-12 h-12 shadow-sm">
                         <Clock size={20} />
                     </Button>
                 </header>
@@ -115,37 +114,37 @@ const Wallet = () => {
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    className="relative p-1 rounded-[2.5rem] bg-gradient-to-br from-orange-500/20 via-orange-500/5 to-transparent border border-white/10 mb-8 overflow-hidden group shadow-2xl"
+                    className="relative p-1 rounded-[2.5rem] bg-gradient-to-br from-[#FE4F4F]/10 via-[#FE4F4F]/5 to-transparent border border-[#FE4F4F]/15 mb-8 overflow-hidden group shadow-lg shadow-red-200/5"
                 >
-                    <div className="absolute inset-0 bg-[#0c0c0e]/80 backdrop-blur-3xl rounded-[2.4rem] -z-10" />
+                    <div className="absolute inset-0 bg-[#FFFDF9]/95 backdrop-blur-3xl rounded-[2.4rem] -z-10" />
 
                     {/* Interior Glow */}
-                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/20 blur-[80px] group-hover:bg-orange-500/30 transition-all duration-700" />
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FE4F4F]/5 blur-[80px] group-hover:bg-[#FE4F4F]/10 transition-all duration-700" />
 
                     <div className="p-8">
                         <div className="flex items-center justify-between mb-6">
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500/80">Available Funds</span>
+                            <span className="text-xs font-black uppercase tracking-wider text-[#FE4F4F]/85 font-condensed">Available Funds</span>
                             <button
                                 onClick={() => setShowBalance(!showBalance)}
-                                className="p-2 rounded-xl bg-white/5 text-zinc-400 hover:text-white transition-colors"
+                                className="p-2 rounded-xl bg-[#FCF6EC] text-[#FE4F4F] hover:bg-[#FE4F4F]/5 transition-colors"
                             >
                                 {showBalance ? <Eye size={18} /> : <EyeOff size={18} />}
                             </button>
                         </div>
 
                         <div className="flex items-baseline gap-2 mb-10">
-                            <span className="text-3xl font-bold text-orange-500">₹</span>
-                            <span className="text-6xl md:text-7xl font-black tracking-tighter">
+                            <span className="text-3xl font-bold text-[#FE4F4F]">₹</span>
+                            <span className="text-6xl md:text-7xl font-black tracking-tighter text-[#FE4F4F] font-condensed">
                                 {showBalance ? walletData.balance.toLocaleString() : "••••"}
                             </span>
                         </div>
 
                         <div className="flex gap-4">
-                            <Button className="flex-1 h-14 rounded-2xl bg-orange-500 text-black hover:bg-orange-400 font-bold text-base shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02]">
+                            <Button className="flex-1 h-14 rounded-2xl bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold text-base shadow-lg shadow-red-200/25 transition-all hover:scale-[1.02] border-0">
                                 <ArrowUpRight size={20} className="mr-2" />
                                 Withdraw
                             </Button>
-                            <Button variant="outline" className="flex-1 h-14 rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10 font-bold text-base backdrop-blur-md">
+                            <Button variant="outline" className="flex-1 h-14 rounded-2xl border-[#FE4F4F]/25 bg-[#FCF6EC] text-stone-600 hover:bg-[#FE4F4F]/5 hover:text-[#FE4F4F] font-bold text-base backdrop-blur-md transition-all">
                                 <Plus size={20} className="mr-2" />
                                 Top Up
                             </Button>
@@ -156,23 +155,23 @@ const Wallet = () => {
                 {/* Secondary Stats Grid */}
                 <div className="grid grid-cols-3 gap-4 mb-10">
                     {[
-                        { label: "Total Earned", val: walletData.totalEarned, icon: TrendingUp, color: "text-orange-400", bg: "bg-orange-500/10" },
-                        { label: "Pending", val: walletData.pendingAmount, icon: Clock, color: "text-amber-400", bg: "bg-amber-500/10" },
-                        { label: "This Week", val: walletData.thisWeekEarnings, icon: CreditCard, color: "text-orange-300", bg: "bg-orange-500/10" },
+                        { label: "Total Earned", val: walletData.totalEarned, icon: TrendingUp, color: "text-[#FE4F4F]", bg: "bg-[#FE4F4F]/10" },
+                        { label: "Pending", val: walletData.pendingAmount, icon: Clock, color: "text-amber-500", bg: "bg-amber-500/10" },
+                        { label: "This Week", val: walletData.thisWeekEarnings, icon: CreditCard, color: "text-[#FE4F4F]", bg: "bg-[#FE4F4F]/10" },
                     ].map((stat, i) => (
                         <motion.div
                             key={i}
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.2 + i * 0.1 }}
-                            className="bg-white/[0.03] border border-white/5 p-4 rounded-3xl flex flex-col items-center text-center gap-2 hover:bg-white/[0.05] transition-colors"
+                            className="bg-[#FFFDF9] border border-[#FE4F4F]/10 p-4 rounded-3xl flex flex-col items-center text-center gap-2 hover:bg-[#FE4F4F]/5 transition-colors shadow-sm"
                         >
                             <div className={`p-2.5 rounded-2xl ${stat.bg} ${stat.color} mb-1`}>
                                 <stat.icon size={18} />
                             </div>
                             <div>
-                                <div className="text-lg font-black leading-none mb-1">₹{stat.val}</div>
-                                <div className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider whitespace-nowrap">{stat.label}</div>
+                                <div className="text-lg font-black leading-none mb-1 text-[#2C2520]">₹{stat.val}</div>
+                                <div className="text-[10px] uppercase font-bold text-stone-500 tracking-wider whitespace-nowrap">{stat.label}</div>
                             </div>
                         </motion.div>
                     ))}
@@ -181,15 +180,15 @@ const Wallet = () => {
                 {/* Activity List */}
                 <section>
                     <div className="flex items-center justify-between mb-6 px-1">
-                        <h3 className="text-xl font-black tracking-tight">Recent Activity</h3>
-                        <div className="flex bg-white/5 p-1 rounded-xl border border-white/5">
+                        <h3 className="text-xl font-black tracking-tight text-[#FE4F4F] font-condensed">Recent Activity</h3>
+                        <div className="flex bg-[#FFFDF9] p-1 rounded-xl border border-[#FE4F4F]/15 shadow-sm">
                             {periods.map((period) => (
                                 <button
                                     key={period.id}
                                     onClick={() => setSelectedPeriod(period.id)}
                                     className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all ${selectedPeriod === period.id
-                                            ? "bg-orange-500 text-black shadow-lg shadow-orange-500/20"
-                                            : "text-zinc-500 hover:text-white"
+                                            ? "bg-[#FE4F4F] text-white shadow-sm"
+                                            : "text-stone-500 hover:text-[#FE4F4F]"
                                         }`}
                                 >
                                     {period.label}
@@ -208,40 +207,39 @@ const Wallet = () => {
                                     animate={{ x: 0, opacity: 1 }}
                                     exit={{ scale: 0.95, opacity: 0 }}
                                     transition={{ delay: i * 0.05 }}
-                                    className="group bg-[#0c0c0e] p-5 rounded-[2rem] border border-white/5 hover:border-orange-500/30 transition-all flex items-center gap-5 shadow-xl"
+                                    className="group bg-[#FFFDF9] p-5 rounded-[2rem] border border-[#FE4F4F]/10 hover:border-[#FE4F4F]/30 hover:bg-[#FE4F4F]/2 transition-all flex items-center gap-5 shadow-sm"
                                 >
                                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${txn.type === "credit"
-                                            ? "bg-orange-500/10 text-orange-500 border border-orange-500/20"
-                                            : "bg-zinc-800 text-zinc-400 border border-zinc-700"
+                                            ? "bg-[#FE4F4F]/10 text-[#FE4F4F] border border-[#FE4F4F]/20"
+                                            : "bg-stone-100 text-stone-500 border border-stone-200"
                                         }`}>
                                         {txn.type === "credit" ? <ArrowDownLeft size={24} /> : <ArrowUpRight size={24} />}
                                     </div>
 
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center justify-between mb-1">
-                                            <h4 className="font-bold text-white text-base truncate">{txn.title}</h4>
-                                            <div className={`text-lg font-black ${txn.type === "credit" ? "text-orange-500" : "text-zinc-400"}`}>
+                                            <h4 className="font-bold text-[#2C2520] text-base truncate">{txn.title}</h4>
+                                            <div className={`text-lg font-black ${txn.type === "credit" ? "text-emerald-600 font-extrabold" : "text-stone-600 font-extrabold"}`}>
                                                 {txn.type === "credit" ? "+" : "-"}₹{txn.amount}
                                             </div>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <p className="text-xs text-zinc-500 truncate font-medium">{txn.description}</p>
-                                            <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-tighter">{txn.time} • {txn.date}</span>
+                                            <p className="text-xs text-stone-500 truncate font-medium">{txn.description}</p>
+                                            <span className="text-[10px] font-bold text-stone-400 uppercase tracking-tighter">{txn.time} • {txn.date}</span>
                                         </div>
                                     </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
 
-                        <Button variant="ghost" className="w-full h-14 rounded-2xl text-zinc-500 hover:text-white hover:bg-white/5 font-bold uppercase tracking-[0.2em] text-[10px]">
+                        <Button variant="ghost" className="w-full h-14 rounded-2xl text-stone-500 hover:text-[#FE4F4F] hover:bg-[#FE4F4F]/5 font-bold uppercase tracking-[0.2em] text-[10px]">
                             View Comprehensive History
                         </Button>
                     </div>
                 </section>
             </div>
 
-            {/* Bottom Fade */}
-            <div className="fixed bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#020204] via-[#020204]/80 to-transparent pointer-events-none z-20" />
+            <div className="fixed bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#FCF6EC] via-[#FCF6EC]/80 to-transparent pointer-events-none z-20" />
         </PageTransition>
     );
 };

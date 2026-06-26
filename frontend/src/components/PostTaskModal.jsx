@@ -245,20 +245,20 @@ const PostTaskModal = ({ onSuccess }) => {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button className="bg-orange-600 hover:bg-orange-500 text-white shadow-lg shadow-orange-600/20 border-0">
+                <Button className="bg-[#FE4F4F] hover:bg-[#E03A3A] text-white shadow-md shadow-red-200/25 border-0 font-condensed text-lg px-6 rounded-full h-10">
                     <Plus className="mr-2 h-4 w-4" /> Post Request
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto bg-[#0a0a0a] border border-white/10 text-white">
+            <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto bg-[#FFFDF9] border border-[#FE4F4F]/20 text-[#2C2520] p-6 shadow-xl">
                 <DialogHeader>
-                    <DialogTitle className="text-white">Post a New Request</DialogTitle>
-                    <DialogDescription className="text-neutral-400">
+                    <DialogTitle className="text-[#FE4F4F] font-condensed text-2xl">Post a New Request</DialogTitle>
+                    <DialogDescription className="text-stone-500">
                         Fill in the details below to request a service.
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                     <div className="space-y-2">
-                        <Label htmlFor="title" className="text-neutral-300">Task Title</Label>
+                        <Label htmlFor="title" className="text-[#2C2520] font-bold">Task Title</Label>
                         <Input
                             id="title"
                             name="title"
@@ -266,21 +266,21 @@ const PostTaskModal = ({ onSuccess }) => {
                             value={formData.title}
                             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                             required
-                            className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                            className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 focus:border-[#FE4F4F]/50 shadow-sm"
                         />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="category" className="text-neutral-300">Category</Label>
+                            <Label htmlFor="category" className="text-[#2C2520] font-bold">Category</Label>
                             <Select
                                 value={formData.category}
                                 onValueChange={(val) => setFormData({ ...formData, category: val })}
                             >
-                                <SelectTrigger id="category" className="bg-white/5 border-white/10 text-white">
+                                <SelectTrigger id="category" className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] shadow-sm">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
-                                <SelectContent className="bg-[#121212] border-white/10 text-white">
+                                <SelectContent className="bg-[#FFFDF9] border border-[#FE4F4F]/15 text-[#2C2520]">
                                     <SelectItem value="delivery">Delivery</SelectItem>
                                     <SelectItem value="shopping">Shopping</SelectItem>
                                     <SelectItem value="pickup">Pickup</SelectItem>
@@ -290,15 +290,15 @@ const PostTaskModal = ({ onSuccess }) => {
                             </Select>
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="urgency" className="text-neutral-300">Urgency</Label>
+                            <Label htmlFor="urgency" className="text-[#2C2520] font-bold">Urgency</Label>
                             <Select
                                 value={formData.urgency}
                                 onValueChange={(val) => setFormData({ ...formData, urgency: val })}
                             >
-                                <SelectTrigger id="urgency" className="bg-white/5 border-white/10 text-white">
+                                <SelectTrigger id="urgency" className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] shadow-sm">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
-                                <SelectContent className="bg-[#121212] border-white/10 text-white">
+                                <SelectContent className="bg-[#FFFDF9] border border-[#FE4F4F]/15 text-[#2C2520]">
                                     <SelectItem value="low">Low (72h)</SelectItem>
                                     <SelectItem value="medium">Medium (24h)</SelectItem>
                                     <SelectItem value="high">High (4h)</SelectItem>
@@ -308,7 +308,7 @@ const PostTaskModal = ({ onSuccess }) => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="pickup" className="text-neutral-300">Pickup Location</Label>
+                        <Label htmlFor="pickup" className="text-[#2C2520] font-bold">Pickup Location</Label>
                         <div className="flex gap-2">
                             <Input
                                 id="pickup"
@@ -317,7 +317,7 @@ const PostTaskModal = ({ onSuccess }) => {
                                 value={formData.pickupLocation}
                                 onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
                                 required
-                                className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                                className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 focus:border-[#FE4F4F]/50 shadow-sm"
                             />
                             <Button
                                 type="button"
@@ -325,7 +325,7 @@ const PostTaskModal = ({ onSuccess }) => {
                                 size="icon"
                                 onClick={handleUseCurrentLocation}
                                 title="Use Current Location"
-                                className="shrink-0 bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-orange-500"
+                                className="shrink-0 bg-[#FFFDF9] border border-[#FE4F4F]/25 text-[#FE4F4F] hover:bg-[#FE4F4F]/5 h-10 w-10"
                             >
                                 <MapPin className="h-4 w-4" />
                             </Button>
@@ -333,7 +333,7 @@ const PostTaskModal = ({ onSuccess }) => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="drop" className="text-neutral-300">Drop Location</Label>
+                        <Label htmlFor="drop" className="text-[#2C2520] font-bold">Drop Location</Label>
                         <div className="flex gap-2">
                             <Input
                                 id="drop"
@@ -342,7 +342,7 @@ const PostTaskModal = ({ onSuccess }) => {
                                 value={formData.dropLocation}
                                 onChange={(e) => setFormData({ ...formData, dropLocation: e.target.value })}
                                 required
-                                className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                                className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 focus:border-[#FE4F4F]/50 shadow-sm"
                             />
                             <Button
                                 type="button"
@@ -350,16 +350,16 @@ const PostTaskModal = ({ onSuccess }) => {
                                 size="icon"
                                 onClick={handleUseCurrentLocationForDrop}
                                 title="Use Current Location for Drop"
-                                className="shrink-0 bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-orange-500"
+                                className="shrink-0 bg-[#FFFDF9] border border-[#FE4F4F]/25 text-[#FE4F4F] hover:bg-[#FE4F4F]/5 h-10 w-10"
                             >
                                 <MapPin className="h-4 w-4" />
                             </Button>
                         </div>
                     </div>
 
-                    <div className="space-y-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div className="space-y-4 bg-[#FCF6EC]/85 p-4 rounded-xl border border-[#FE4F4F]/10 shadow-inner">
                         <div className="space-y-2">
-                            <Label htmlFor="reward" className="text-orange-400">Walker Tip/Reward (₹)</Label>
+                            <Label htmlFor="reward" className="text-[#FE4F4F] font-bold">Walker Tip/Reward (₹)</Label>
                             <Input
                                 id="reward"
                                 name="reward"
@@ -368,21 +368,21 @@ const PostTaskModal = ({ onSuccess }) => {
                                 value={formData.reward}
                                 onChange={(e) => setFormData({ ...formData, reward: e.target.value })}
                                 required
-                                className="bg-[#050505] border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                                className="bg-[#FFFDF9] border border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 focus:border-[#FE4F4F]/50 shadow-sm"
                             />
                         </div>
 
                         {Number(formData.reward) > 0 && (
-                            <div className="text-sm space-y-2 pt-2 border-t border-dashed border-white/10">
-                                <div className="flex justify-between text-neutral-400">
+                            <div className="text-sm space-y-2 pt-2 border-t border-dashed border-[#FE4F4F]/10">
+                                <div className="flex justify-between text-stone-500">
                                     <span>Walker Gets:</span>
                                     <span>₹{Number(formData.reward).toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-neutral-400">
+                                <div className="flex justify-between text-stone-500">
                                     <span>Platform Fee (10%):</span>
                                     <span>₹{(Number(formData.reward) * 0.10).toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between font-bold text-white text-base pt-1">
+                                <div className="flex justify-between font-bold text-[#2C2520] text-base pt-1">
                                     <span>Total Payable:</span>
                                     <span>₹{(Number(formData.reward) * 1.10).toFixed(2)}</span>
                                 </div>
@@ -391,7 +391,7 @@ const PostTaskModal = ({ onSuccess }) => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description" className="text-neutral-300">Details</Label>
+                        <Label htmlFor="description" className="text-[#2C2520] font-bold">Details</Label>
                         <Textarea
                             id="description"
                             name="description"
@@ -399,11 +399,11 @@ const PostTaskModal = ({ onSuccess }) => {
                             value={formData.description}
                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                             required
-                            className="bg-white/5 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50"
+                            className="bg-[#FCF6EC] border-[#FE4F4F]/15 text-[#2C2520] placeholder:text-stone-400 focus:border-[#FE4F4F]/50 shadow-sm"
                         />
                     </div>
 
-                    <Button type="submit" className="w-full bg-white text-black hover:bg-neutral-200 font-bold" disabled={loading}>
+                    <Button type="submit" className="w-full bg-[#FE4F4F] text-white hover:bg-[#E03A3A] font-bold shadow-md shadow-red-200/25 border-0 h-11" disabled={loading}>
                         {loading ? "Posting..." : "Post Task"}
                     </Button>
                 </form>
